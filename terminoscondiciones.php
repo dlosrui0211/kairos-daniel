@@ -15,7 +15,7 @@
 
     <main class="terminos-main">
         <div class="container">
-            <h1 class="terminos-titulo">Condiciones Generales de Venta</h1>
+            <h1 class="terminos-titulo">Condiciones</h1>
 
             <div class="terminos-contenido">
                 <p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos
