@@ -1,0 +1,307 @@
+
+@import '../variables';
+
+
+.offcanvas {
+    background-color: $primario;
+    width: 450px;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+
+    @media (max-width: 576px) {
+        width: 100%;
+    }
+}
+.offcanvas-header {
+    background-color: $primario;
+    border-bottom: 1px solid rgba($texto_claro, 0.2);
+    padding: 20px 25px;
+
+    .offcanvas-title {
+        font-family: $headings-font-family;
+        font-size: 28px;
+        color: $texto_claro;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 400;
+    }
+
+    .btn-close {
+        color: $texto_claro;
+        opacity: 0.7;
+        filter: invert(1);
+
+        &:hover,
+        &:focus {
+            color: $resalte;
+            opacity: 1;
+        }
+    }
+}
+
+.offcanvas-body {
+    background-color: $primario;
+    padding: 20px 25px;
+    flex-grow: 1;
+    overflow-y: auto;
+
+
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: $secundario;
+        border-radius: 10px;
+    }
+}
+
+.product-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.list-group-item.elemento-carrito {
+    background-color: $secundario;
+    border: none;
+    border-radius: 12px;
+    padding: 12px;
+    color: $texto_claro;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba($resalte, 0.15);
+    }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    .producto-title {
+        font-family: $headings-font-family;
+        font-size: 16px;
+        color: $texto_claro;
+        text-transform: uppercase;
+        font-weight: 400;
+    }
+
+
+    .product-price {
+        font-family: $headings-font-family;
+        font-size: 15px;
+        color: lighten($resalte, 20%);
+        font-weight: 700;
+    }
+
+    .car-tula {
+        width: 70px;
+        height: 70px;
+        object-fit: cover;
+        background-color: #000;
+    }
+}
+
+
+.item-quantity {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 4px 8px;
+    border-radius: 8px;
+    min-width: 70px;
+    justify-content: center;
+
+    .quantity-display {
+        width: 20px;
+        text-align: center;
+        color: $texto_claro;
+        font-weight: 600;
+        font-size: 16px;
+    }
+
+    .quantity-btn {
+        background: none;
+        border: none;
+        color: $texto_claro;
+        cursor: pointer;
+        padding: 0;
+        font-size: 16px;
+        opacity: 0.7;
+        transition: opacity 0.2s ease, color 0.2s ease;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+            opacity: 1;
+            color: $resalte;
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+.remove-item-btn {
+    background: transparent;
+    border: none;
+    color: rgba($texto_claro, 0.6);
+    font-size: 18px;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+
+    &:hover {
+        color: #ff4d4d;
+        background-color: transparent;
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: none;
+    }
+
+    i {
+        font-size: 18px;
+    }
+}
+
+.offcanvas-footer {
+    background-color: $primario;
+    border-top: 1px solid rgba($texto_claro, 0.2);
+    padding: 25px;
+    flex-shrink: 0;
+
+    .subtotal-text {
+        font-family: $font-family-sans-serif;
+        font-size: 18px;
+        color: rgba($texto_claro, 0.8);
+    }
+
+    .subtotal-price {
+        font-family: $headings-font-family;
+        font-size: 24px;
+        color: $texto_claro;
+        font-weight: 700;
+    }
+
+    .d-flex {
+        padding: 0 15px;
+        margin-bottom: 20px;
+    }
+
+    .d-grid {
+        gap: 12px;
+        padding: 0 15px;
+
+        .btn {
+            border-radius: 50px;
+            font-family: $headings-font-family;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 12px 20px;
+            font-weight: 400;
+            transition: all 0.2s ease;
+
+            &:hover {
+                transform: scale(1.02);
+            }
+
+            &.btn-primary {
+                background-color: $resalte;
+                border-color: $resalte;
+                color: $texto_claro;
+                box-shadow: 0 4px 15px rgba($resalte, 0.4);
+
+                &:hover {
+                    background-color: darken($resalte, 10%);
+                    border-color: darken($resalte, 10%);
+                    box-shadow: 0 6px 20px rgba($resalte, 0.5);
+                }
+
+                &:focus {
+                    box-shadow: 0 0 0 0.2rem rgba($resalte, 0.25);
+                }
+            }
+
+            &.btn-outline-secondary {
+                color: rgba($texto_claro, 0.6);
+                border-color: rgba($texto_claro, 0.2);
+
+                &:hover {
+                    background-color: rgba(255, 255, 255, 0.05);
+                    color: $texto_claro;
+                    border-color: $texto_claro;
+                }
+
+                &:focus {
+                    box-shadow: 0 0 0 0.2rem rgba($texto_claro, 0.25);
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .offcanvas {
+        width: 100%;
+    }
+
+    .offcanvas-header {
+        padding: 15px 20px;
+
+        .offcanvas-title {
+            font-size: 24px;
+        }
+    }
+
+    .offcanvas-body {
+        padding: 15px 20px;
+    }
+
+    .list-group-item.elemento-carrito {
+        padding: 10px;
+
+        .car-tula {
+            width: 60px;
+            height: 60px;
+        }
+
+        .producto-title {
+            font-size: 14px;
+        }
+
+        .product-price {
+            font-size: 13px;
+        }
+    }
+
+    .offcanvas-footer {
+        padding: 20px;
+
+        .d-flex {
+            padding: 0 10px;
+            margin-bottom: 15px;
+        }
+
+        .d-grid {
+            padding: 0 10px;
+            gap: 10px;
+
+            .btn {
+                font-size: 14px;
+                padding: 10px 15px;
+            }
+        }
+    }
+}

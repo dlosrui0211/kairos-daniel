@@ -1,0 +1,336 @@
+
+@import '../variables';
+
+
+.contenedor-pago {
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+
+    .row {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 30px;
+        align-items: flex-start;
+    }
+
+    @media (max-width: 992px) {
+        max-width: 95%;
+    }
+
+    @media (max-width: 768px) {
+        max-width: 100%;
+        padding: 0 10px;
+
+        .row {
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+    }
+}
+
+.zona-pago-main {
+    background-color: $primario;
+    min-height: 100vh;
+    padding: 40px 20px;
+
+    @media (max-width: 768px) {
+        padding: 20px 10px;
+    }
+}
+
+
+.productos-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    @media (max-width: 768px) {
+        margin-bottom: 20px;
+    }
+}
+
+
+.producto-item {
+    background-color: $secundario;
+    border-radius: 12px;
+    padding: 12px;
+    color: $texto_claro;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba($resalte, 0.15);
+    }
+
+
+    .producto-img {
+        width: 55px;
+        height: 55px;
+        object-fit: cover;
+        background-color: #000;
+        flex-shrink: 0;
+    }
+
+    .producto-nombre {
+        font-family: $headings-font-family;
+        font-size: 16px;
+        color: $texto_claro;
+        text-transform: uppercase;
+        font-weight: $headings-font-weight;
+        margin-bottom: 4px;
+    }
+
+
+    .producto-precio {
+        font-family: $headings-font-family;
+        font-size: 15px;
+        color: lighten($resalte, 20%);
+        font-weight: 700;
+    }
+}
+
+
+.cantidad-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 4px 8px;
+    border-radius: 8px;
+    min-width: 70px;
+    justify-content: center;
+
+    .cantidad-valor {
+        width: 20px;
+        text-align: center;
+        color: $texto_claro;
+        font-weight: 600;
+        font-size: 16px;
+    }
+
+    .cantidad-btn {
+        background: none;
+        border: none;
+        color: $texto_claro;
+        cursor: pointer;
+        padding: 0;
+        font-size: 16px;
+        opacity: 0.7;
+        transition: opacity 0.2s ease, color 0.2s ease;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+            opacity: 1;
+            color: $resalte;
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+
+.eliminar-btn {
+    background: transparent;
+    border: none;
+    color: rgba($texto_claro, 0.6);
+    font-size: 18px;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+
+    &:hover {
+        color: #ff4d4d;
+        background-color: transparent;
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: none;
+    }
+}
+
+
+.resumen-card {
+    background-color: $secundario;
+    border-radius: 12px;
+    padding: 25px;
+    color: $texto_claro;
+
+    @media (max-width: 768px) {
+        padding: 20px;
+    }
+}
+
+.resumen-titulo {
+    font-family: $headings-font-family;
+    font-size: 24px;
+    color: $texto_claro;
+    text-transform: uppercase;
+    font-weight: $headings-font-weight;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba($texto_claro, 0.2);
+    margin-bottom: 20px;
+
+    @media (max-width: 768px) {
+        font-size: 20px;
+        padding-bottom: 12px;
+        margin-bottom: 15px;
+    }
+}
+
+
+.resumen-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba($texto_claro, 0.1);
+
+
+    &.info-row {
+        border-bottom: none;
+        justify-content: center;
+        padding: 10px 0;
+    }
+
+
+    &.total-row {
+        padding-top: 15px;
+        padding-bottom: 0;
+        border-bottom: none;
+        border-top: 1px solid rgba($texto_claro, 0.2);
+        margin-top: 10px;
+    }
+}
+
+.resumen-label {
+    font-family: $font-family-sans-serif;
+    font-size: 16px;
+    color: rgba($texto_claro, 0.8);
+    font-weight: 400;
+
+    @media (max-width: 768px) {
+        font-size: 14px;
+    }
+}
+
+.resumen-valor {
+    font-family: $font-family-sans-serif;
+    font-size: 16px;
+    color: $texto_claro;
+    font-weight: 600;
+
+    @media (max-width: 768px) {
+        font-size: 14px;
+    }
+}
+
+
+.resumen-info {
+    font-family: $font-family-sans-serif;
+    font-size: 14px;
+    color: rgba($texto_claro, 0.8);
+    font-style: italic;
+    text-align: center;
+
+    @media (max-width: 768px) {
+        font-size: 12px;
+    }
+}
+
+.resumen-total {
+    font-family: $headings-font-family;
+    font-size: 20px;
+    color: $texto_claro;
+    font-weight: $headings-font-weight;
+
+    @media (max-width: 768px) {
+        font-size: 18px;
+    }
+}
+
+.resumen-total-valor {
+    font-family: $headings-font-family;
+    font-size: 20px;
+    color: $texto_claro;
+    font-weight: 700;
+
+    @media (max-width: 768px) {
+        font-size: 18px;
+    }
+}
+
+.confirmar-btn {
+    background-color: $resalte;
+    border: none;
+    border-radius: 50px;
+    font-family: $headings-font-family;
+    font-size: 16px;
+    font-weight: $headings-font-weight;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: $texto_claro;
+    padding: 12px 20px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 15px rgba($resalte, 0.4);
+
+    &:hover {
+        background-color: darken($resalte, 10%);
+        box-shadow: 0 6px 20px rgba($resalte, 0.5);
+        transform: scale(1.02);
+        color: $texto_claro;
+    }
+
+    &:focus {
+        box-shadow: 0 0 0 0.2rem rgba($resalte, 0.25);
+        outline: none;
+    }
+
+    @media (max-width: 768px) {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container-fluid {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .productos-list {
+        gap: 10px;
+    }
+
+    .producto-item {
+        padding: 10px;
+
+        .producto-img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .producto-nombre {
+            font-size: 14px;
+        }
+
+        .producto-precio {
+            font-size: 13px;
+        }
+    }
+
+    .resumen-card {
+        margin-top: 20px;
+    }
+}

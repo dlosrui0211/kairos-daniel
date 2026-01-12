@@ -1,0 +1,100 @@
+
+@import '../variables';
+
+main {
+    background-color: $primario;
+    min-height: 100vh;
+    padding: 0;
+}
+
+.banner {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    margin-bottom: 40px;
+
+    @media (max-width: 768px) {
+        margin-bottom: 30px;
+    }
+
+    @media (max-width: 576px) {
+        margin-bottom: 20px;
+    }
+}
+
+.bannerIMG {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    max-height: 400px;
+
+    @media (max-width: 768px) {
+        max-height: 300px;
+    }
+
+    @media (max-width: 576px) {
+        max-height: 200px;
+    }
+}
+
+.products {
+    background-color: $primario;
+    padding: 40px 20px;
+
+    @media (max-width: 768px) {
+        padding: 30px 15px;
+    }
+
+    @media (max-width: 576px) {
+        padding: 20px 10px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container-fluid {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .row.g-4 {
+        .col-md-4 {
+            flex: 0 0 calc(33.333% - 11px);
+            margin-bottom: 0;
+        }
+    }
+}
+
+
+@media (min-width: 576px) and (max-width: 767px) {
+    .row.g-4 {
+        .col-sm-6 {
+            flex: 0 0 calc(50% - 8px);
+            margin-bottom: 0;
+        }
+    }
+}
+
+
+@media (max-width: 575px) {
+    .row.g-4 {
+        .col-12 {
+            flex: 0 0 100%;
+            margin-bottom: 0;
+        }
+    }
+}
+
+.row.g-4 {
+    gap: 20px;
+
+    @media (max-width: 768px) {
+        gap: 15px;
+    }
+
+    @media (max-width: 576px) {
+        gap: 12px;
+    }
+}

@@ -1,0 +1,177 @@
+.recibos-main {
+  background: $primario;
+  min-height: calc(100vh - $navbar-height);
+  padding: calc($spacer * 3) 0;
+}
+
+.recibos-header {
+  margin-bottom: calc($spacer * 6);
+  
+  h1 {
+    color: $texto_claro;
+    font-family: $headings-font-family;
+    font-weight: 400;
+    font-size: calc($font-size-base * 1.5);
+    letter-spacing: 3px;
+    text-align: center;
+    margin: 0;
+    
+    @media (max-width: 768px) {
+      font-size: calc($font-size-base * 1.2);
+      letter-spacing: 2px;
+      margin-bottom: calc($spacer * 4);
+    }
+  }
+}
+
+
+.recibo-card {
+  background: linear-gradient(135deg, $secundario 0%, darken($secundario, 10%) 100%);
+  border-radius: 12px;
+  padding: calc($spacer * 1.5);
+  display: flex;
+  align-items: center;
+  gap: calc($spacer * 1.5);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateX(5px);
+    background: linear-gradient(135deg, lighten($secundario, 5%) 0%, darken($secundario, 5%) 100%);
+  }
+  
+  @media (max-width: 768px) {
+    padding: $spacer;
+    gap: $spacer;
+  }
+}
+
+
+.recibo-icon {
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba($texto_claro, 0.1);
+  border-radius: 8px;
+  
+  svg {
+    width: 40px;
+    height: 40px;
+    color: $texto_claro;
+  }
+  
+  @media (max-width: 768px) {
+    width: 50px;
+    height: 50px;
+    
+    svg {
+      width: 32px;
+      height: 32px;
+    }
+  }
+}
+
+.recibo-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.recibo-titulo {
+  color: $texto_claro;
+  font-family: $headings-font-family;
+  font-weight: 700;
+  font-size: calc($font-size-base * 1.1);
+  margin: 0 0 calc($spacer * 0.25) 0;
+  
+  @media (max-width: 768px) {
+    font-size: $font-size-base;
+  }
+}
+
+.recibo-subtitulo {
+  color: rgba($texto_claro, 0.8);
+  font-size: calc($font-size-base * 0.85);
+  margin: 0;
+  
+  @media (max-width: 768px) {
+    font-size: calc($font-size-base * 0.75);
+  }
+}
+
+
+.recibo-fecha {
+  flex-shrink: 0;
+  padding: calc($spacer * 0.4) calc($spacer * 0.8);
+  border-radius: 6px;
+  
+  span {
+    color: $texto_claro;
+    font-size: calc($font-size-base * 0.85);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  
+  @media (max-width: 768px) {
+    padding: calc($spacer * 0.3) calc($spacer * 0.6);
+    
+    span {
+      font-size: calc($font-size-base * 0.75);
+    }
+  }
+}
+
+.recibo-delete {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: transparent;
+  
+  svg {
+    width: 20px;
+    height: 20px;
+    color: $texto_claro;
+    transition: color 0.3s ease;
+  }
+  
+  &:hover {
+    background: transparent;
+    
+    svg {
+      color: lighten($danger, 20%);
+    }
+  }
+  
+  &:active {
+    transform: scale(0.95);
+  }
+  
+  @media (max-width: 768px) {
+    width: 36px;
+    height: 36px;
+    
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+}
+
+.recibos-empty {
+  text-align: center;
+  padding: calc($spacer * 4) $spacer;
+  color: rgba($texto_claro, 0.6);
+  
+  p {
+    font-size: $font-size-base;
+    margin: 0;
+  }
+}
