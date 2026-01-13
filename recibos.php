@@ -34,11 +34,11 @@
                             </svg>
                         </div>
                         <div class="recibo-info">
-                            <h3 class="recibo-titulo">Recibo #12345</h3>
-                            <p class="recibo-subtitulo">Emitido el 15 de Enero, 2025</p>
+                            <h3 class="recibo-titulo">Recibo #135</h3>
+                            <p class="recibo-subtitulo">Emitido el 27 de Enero, 2026</p>
                         </div>
                         <div class="recibo-fecha">
-                            <span>30 días</span>
+                            <span>3 días</span>
                         </div>
                         <button class="recibo-delete" aria-label="Eliminar recibo">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -62,11 +62,11 @@
                             </svg>
                         </div>
                         <div class="recibo-info">
-                            <h3 class="recibo-titulo">Recibo #12344</h3>
-                            <p class="recibo-subtitulo">Emitido el 08 de Enero, 2025</p>
+                            <h3 class="recibo-titulo">Recibo #041</h3>
+                            <p class="recibo-subtitulo">Emitido el 08 de Enero, 2026</p>
                         </div>
                         <div class="recibo-fecha">
-                            <span>30 días</span>
+                            <span>20 días</span>
                         </div>
                         <button class="recibo-delete" aria-label="Eliminar recibo">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -90,11 +90,11 @@
                             </svg>
                         </div>
                         <div class="recibo-info">
-                            <h3 class="recibo-titulo">Recibo #12343</h3>
-                            <p class="recibo-subtitulo">Emitido el 02 de Enero, 2025</p>
+                            <h3 class="recibo-titulo">Recibo #343</h3>
+                            <p class="recibo-subtitulo">Emitido el 13 de Enero, 2026</p>
                         </div>
                         <div class="recibo-fecha">
-                            <span>30 días</span>
+                            <span>15 días</span>
                         </div>
                         <button class="recibo-delete" aria-label="Eliminar recibo">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -118,8 +118,8 @@
                             </svg>
                         </div>
                         <div class="recibo-info">
-                            <h3 class="recibo-titulo">Recibo #12342</h3>
-                            <p class="recibo-subtitulo">Emitido el 25 de Diciembre, 2024</p>
+                            <h3 class="recibo-titulo">Recibo #122</h3>
+                            <p class="recibo-subtitulo">Emitido el 14 de Diciembre, 2025</p>
                         </div>
                         <div class="recibo-fecha">
                             <span>30 días</span>

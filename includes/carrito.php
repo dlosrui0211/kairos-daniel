@@ -61,33 +61,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="list-group-item elemento-carrito" data-product-id="3" data-price="19">
-                <div class="d-flex gap-3">
-                    <div class="flex-shrink-0">
-                        <img src="assets/img/fc26.jpg" alt="The Witcher 3" 
-                            class="car-tula rounded" style="width: 70px; height: 70px; object-fit: cover;">
-                    </div>
-                    
-                    <div class="flex-grow-1">
-                        <h6 class="mb-1 producto-title">The Witcher 3</h6>
-                        <p class="mb-0 product-price">19€</p>
-                    </div>
-                    
-                    <div class="d-flex align-items-center gap-2">
-                        <div class="item-quantity">
-                            <button class="quantity-btn decrement-btn" aria-label="Disminuir cantidad">−</button>
-                            <span class="quantity-display" data-quantity>1</span>
-                            <button class="quantity-btn increment-btn" aria-label="Aumentar cantidad">+</button>
-                        </div>
-                        
-                        <button class="btn btn-sm remove-item-btn" aria-label="Eliminar producto">
-                            <i class="bi bi-trash"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
 

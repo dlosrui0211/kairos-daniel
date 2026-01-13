@@ -17,7 +17,7 @@ include("includes/a_config.php");
 
     <main>
         <section class="banner">
-            <img src="assets/img/placeholder.png" alt="Banner Nintendo" class="bannerIMG">
+            <img src="assets/img/placeholder.png" alt="Banner Play" class="bannerIMG">
         </section>
 
         <section class="productos-section">
@@ -26,80 +26,80 @@ include("includes/a_config.php");
                     
                     <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                         <?php 
-                        $productImage = 'assets/img/nintendo.png';
+                        $productImage = 'assets/img/pslogo.png';
                         $discount = '-25%';
                         $price = '49.99€';
-                        $platformName = 'Nintendo';
+                        $platformName = 'play';
                         include("includes/product-card.php"); 
                         ?>
                     </div>
 
                     <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                         <?php 
-                        $productImage = 'assets/img/nintendo.png';
+                        $productImage = 'assets/img/pslogo.png';
                         $discount = '-25%';
                         $price = '49.99€';
-                        $platformName = 'Nintendo';
+                        $platformName = 'play';
                         include("includes/product-card.php"); 
                         ?>
                     </div>
 
                     <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                         <?php 
-                        $productImage = 'assets/img/nintendo.png';
+                        $productImage = 'assets/img/pslogo.png';
                         $discount = '-25%';
                         $price = '49.99€';
-                        $platformName = 'Nintendo';
+                        $platformName = 'play';
                         include("includes/product-card.php"); 
                         ?>
                     </div>
 
                     <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                         <?php 
-                        $productImage = 'assets/img/nintendo.png';
+                        $productImage = 'assets/img/pslogo.png';
                         $discount = '-25%';
                         $price = '49.99€';
-                        $platformName = 'Nintendo';
+                        $platformName = 'play';
                         include("includes/product-card.php"); 
                         ?>
                     </div>
 
                     <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                         <?php 
-                        $productImage = 'assets/img/nintendo.png';
+                        $productImage = 'assets/img/pslogo.png';
                         $discount = '-25%';
                         $price = '49.99€';
-                        $platformName = 'Nintendo';
+                        $platformName = 'pslogo';
                         include("includes/product-card.php"); 
                         ?>
                     </div>
 
                     <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                         <?php 
-                        $productImage = 'assets/img/nintendo.png';
+                        $productImage = 'assets/img/pslogo.png';
                         $discount = '-25%';
                         $price = '49.99€';
-                        $platformName = 'Nintendo';
+                        $platformName = 'pslogo';
                         include("includes/product-card.php"); 
                         ?>
                     </div>
 
                     <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                         <?php
-                        $productImage = 'assets/img/nintendo.png';
+                        $productImage = 'assets/img/pslogo.png';
                         $discount = '-25%';
                         $price = '49.99€';
-                        $platformName = 'Nintendo';
+                        $platformName = 'play';
                         include("includes/product-card.php"); 
                         ?>
                     </div>
 
                     <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                         <?php 
-                        $productImage = 'assets/img/nintendo.png';
+                        $productImage = 'assets/img/pslogo.png';
                         $discount = '-25%';
                         $price = '49.99€';
-                        $platformName = 'Nintendo';
+                        $platformName = 'play';
                         include("includes/product-card.php"); 
                         ?>
                     </div>

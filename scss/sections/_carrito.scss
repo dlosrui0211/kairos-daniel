@@ -91,7 +91,7 @@
         font-family: $headings-font-family;
         font-size: 15px;
         color: lighten($resalte, 20%);
-        font-weight: 700;
+        font-weight: 300;
     }
 
     .car-tula {
@@ -191,7 +191,7 @@
         font-family: $headings-font-family;
         font-size: 24px;
         color: $texto_claro;
-        font-weight: 700;
+        font-weight: 400;
     }
 
     .d-flex {
@@ -210,7 +210,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             padding: 12px 20px;
-            font-weight: 400;
+            font-weight: 200;
             transition: all 0.2s ease;
 
             &:hover {
