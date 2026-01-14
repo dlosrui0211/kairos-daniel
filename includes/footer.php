@@ -6,6 +6,8 @@
             <a href="terminoscondiciones.php">Términos y Condiciones</a>
             <a href="trabaja_con_nosotros.php">Trabaja con nosotros</a>
             <a href="soporte.php">Soporte</a>
+            <a href="terminosLegales.php">Terminos Legales</a>
+            <a href="juego.php">Juego</a>
         </div>
 
         <div class="kairos-footer-social">

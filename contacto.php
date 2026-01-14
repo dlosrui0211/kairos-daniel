@@ -60,9 +60,9 @@
                             </div>
                         </div>
                         <div class="d-none" id="submitErrorMessage">
-                            <div class="text-center text-danger mb-3">Error sending message!</div>
+                            <div class="text-center text-danger mb-3">Error enviando el mensaje!</div>
                         </div>
-                        <button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">Send</button>
+                        <button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">Enviar</button>
                     </form>
                 </div>
             </div>

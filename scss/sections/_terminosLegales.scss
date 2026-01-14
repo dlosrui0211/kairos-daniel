@@ -1,0 +1,235 @@
+@import '../variables';
+
+.terminos-main {
+    background: $primario;
+    min-height: 100vh;
+    padding: 60px 20px;
+
+    @media (max-width: 768px) {
+        padding: 40px 15px;
+    }
+}
+
+.terminos-contenido {
+    background: $secundario;
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+
+    @media (max-width: 768px) {
+        padding: 25px;
+        border-radius: 8px;
+    }
+}
+
+h1 {
+    color: $texto_claro;
+    font-family: $headings-font-family;
+    font-size: 42px;
+    font-weight: 400;
+    margin-bottom: 40px;
+
+    @media (max-width: 768px) {
+        font-size: 32px;
+        margin-bottom: 30px;
+    }
+}
+
+.terminos-seccion,
+section {
+    margin-bottom: 50px;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    @media (max-width: 768px) {
+        margin-bottom: 35px;
+    }
+}
+
+h2,
+.h3 {
+    color: $texto_claro;
+    font-family: $headings-font-family;
+    font-size: 28px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    border-bottom: 2px solid $resalte;
+    padding-bottom: 10px;
+
+    @media (max-width: 768px) {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+}
+
+h3,
+.h5 {
+    color: $texto_claro;
+    font-family: $headings-font-family;
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: 15px;
+
+    @media (max-width: 768px) {
+        font-size: 20px;
+    }
+}
+
+p {
+    color: $texto_claro;
+    font-family: $font-family-sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 15px;
+
+    @media (max-width: 768px) {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+}
+
+ul {
+    color: $texto_claro;
+    font-family: $font-family-sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+    
+    li {
+        margin-bottom: 10px;
+
+        strong {
+            color: $texto_oscuro;
+            font-weight: 400;
+        }
+    }
+
+    @media (max-width: 768px) {
+        font-size: 15px;
+    }
+}
+
+a {
+    color: $resalte;
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+        color: lighten($resalte, 15%);
+        text-decoration: underline;
+    }
+}
+
+.table-responsive {
+    margin: 25px 0;
+    border-radius: 8px;
+    overflow: hidden;
+
+    @media (max-width: 768px) {
+        margin: 20px 0;
+    }
+}
+
+.table {
+    color: $texto_claro;
+    background: transparent;
+    margin-bottom: 0;
+    font-size: 15px;
+
+    thead {
+        background: darken($primario, 5%);
+        
+        th {
+            color: $texto_claro;
+            font-family: $headings-font-family;
+            font-weight: 400;
+            font-size: 16px;
+            padding: 15px;
+            border: 1px solid rgba($texto_claro, 0.1);
+
+            @media (max-width: 768px) {
+                font-size: 14px;
+                padding: 12px 8px;
+            }
+        }
+    }
+
+    tbody {
+        tr {
+            background: rgba($texto_claro, 0.02);
+            transition: background 0.3s ease;
+
+            &:hover {
+                background: rgba($resalte, 0.1);
+            }
+
+            td {
+                color: $texto_claro;
+                font-family: $font-family-sans-serif;
+                padding: 12px 15px;
+                border: 1px solid rgba($texto_claro, 0.1);
+                vertical-align: middle;
+
+                @media (max-width: 768px) {
+                    font-size: 13px;
+                    padding: 10px 8px;
+                }
+            }
+        }
+    }
+
+    &.table-bordered {
+        border: 1px solid rgba($texto_claro, 0.1);
+    }
+
+    @media (max-width: 768px) {
+        font-size: 13px;
+    }
+}
+
+.alert {
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+    border: none;
+
+    &.alert-warning {
+        background: rgba($resalte, 0.15);
+        border-left: 4px solid $resalte;
+        color: $texto_claro;
+
+        strong {
+            color: lighten($resalte, 20%);
+            font-weight: 400;
+        }
+    }
+
+    @media (max-width: 768px) {
+        padding: 15px;
+        font-size: 14px;
+    }
+}
+
+.ia-contenido {
+    margin-top: 30px;
+}
+
+.terminos-ultima-actualizacion {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 1px solid rgba($texto_claro, 0.1);
+    color: rgba($texto_claro, 0.6);
+    font-style: italic;
+
+    @media (max-width: 768px) {
+        margin-top: 35px;
+        padding-top: 20px;
+    }
+}
+
+strong {
+    color: $texto_oscuro;
+    font-weight: 400;
+}

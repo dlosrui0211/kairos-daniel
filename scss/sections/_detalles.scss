@@ -4,7 +4,7 @@
 @import '../variables';
 
 
-.details-main {
+.detalles-main {
     min-height: 100vh;
     background-color: $primario;
     padding: 2rem 0;
@@ -14,7 +14,7 @@
     }
 }
 
-.details-container {
+.detalles-container {
     max-width: 1300px;
     margin: 0 auto;
     padding: 0 1.5rem;
@@ -26,7 +26,7 @@
 
 
 
-.details-image {
+.detalles-image {
     width: 100%;
     border-radius: 15px;
     overflow: hidden;
@@ -49,7 +49,7 @@
     }
 }
 
-.details-info {
+.detalles-info {
     background: transparent;
     display: flex;
     flex-direction: column;
@@ -64,7 +64,7 @@
     }
 }
 
-.details-title {
+.detalles-title {
     font-family: $headings-font-family;
     font-weight: $headings-font-weight;
     font-size: 2.2rem;
@@ -83,7 +83,7 @@
     }
 }
 
-.details-meta {
+.detalles-meta {
     display: flex;
     flex-direction: column;
     gap: 0.2rem;
@@ -108,7 +108,7 @@
     }
 }
 
-.details-description {
+.detalles-description {
     margin-top: 0.3rem;
     
     p {
@@ -129,7 +129,7 @@
 
 
 
-.details-price-section {
+.detalles-price-section {
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -142,7 +142,7 @@
     }
 }
 
-.details-price {
+.detalles-price {
     font-family: $headings-font-family;
     font-weight: $headings-font-weight;
     font-size: 1.8rem;
@@ -157,7 +157,7 @@
     }
 }
 
-.details-add-btn {
+.detalles-add-btn {
     font-family: $headings-font-family;
     font-weight: $headings-font-weight;
     font-size: 1rem;
@@ -189,7 +189,7 @@
 }
 
 
-.requirements-title {
+.requerimientos-title {
     font-family: $headings-font-family;
     font-weight: $headings-font-weight;
     font-size: 1.6rem;
@@ -205,7 +205,7 @@
     }
 }
 
-.requirements-card {
+.requerimientos-card {
     background: $resalte;
     border-radius: 15px;
     padding: 1.3rem;
@@ -216,7 +216,7 @@
     }
 }
 
-.requirements-subtitle {
+.requerimientos-subtitle {
     font-family: $headings-font-family;
     font-weight: $headings-font-weight;
     font-size: 1.2rem;
@@ -232,7 +232,7 @@
     }
 }
 
-.requirements-list {
+.requerimientos-list {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -264,7 +264,7 @@
 
 
 @media (max-width: 992px) {
-    .details-main {
+    .detalles-main {
         .row {
             &.mb-4 {
                 margin-bottom: 2rem !important;
@@ -272,13 +272,13 @@
         }
     }
     
-    .details-info {
+    .detalles-info {
         margin-top: 1.5rem;
     }
 }
 
 @media (max-width: 576px) {
-    .details-container {
+    .detalles-container {
         padding: 0 0.8rem;
     }
 }

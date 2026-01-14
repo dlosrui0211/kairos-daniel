@@ -48,30 +48,32 @@
 
 .recibo-icon {
   flex-shrink: 0;
-  width: 60px;
-  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba($texto_claro, 0.1);
   border-radius: 8px;
-  
-  svg {
+  width: 60px;
+  height: 60px;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    display: block;
+  }
+
+  @media (max-width: 768px) {
     width: 40px;
     height: 40px;
-    color: $texto_claro;
-  }
-  
-  @media (max-width: 768px) {
-    width: 50px;
-    height: 50px;
-    
-    svg {
-      width: 32px;
-      height: 32px;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
     }
   }
 }
+
 
 .recibo-info {
   flex: 1;

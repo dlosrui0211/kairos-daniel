@@ -29,8 +29,7 @@
                                         id="nombre" 
                                         name="nombre"
                                         class="form-control form-control-lg" 
-                                        placeholder="Tu nombre" 
-                                        required />
+                                        placeholder="Tu nombre"/>
                                 </div>
 
                                 <div class="mb-3">
@@ -40,8 +39,7 @@
                                         id="apellidos" 
                                         name="apellidos"
                                         class="form-control form-control-lg" 
-                                        placeholder="Tus apellidos" 
-                                        required />
+                                        placeholder="Tus apellidos"/>
                                 </div>
 
                                 <div class="mb-3">
@@ -51,8 +49,7 @@
                                         id="email" 
                                         name="email"
                                         class="form-control form-control-lg bg-white" 
-                                        placeholder="correo@ejemplo.com" 
-                                        required />
+                                        placeholder="correo@ejemplo.com"/>
                                 </div>
 
                                 <div class="mb-4">
@@ -62,8 +59,7 @@
                                         id="password" 
                                         name="password"
                                         class="form-control form-control-lg" 
-                                        placeholder="Crea una contraseña" 
-                                        required />
+                                        placeholder="Crea una contraseña" />
                                 </div>
 
                                 <div class="d-grid gap-2 mb-4">
@@ -76,7 +72,7 @@
                                 </div>
 
                                 <div class="text-center border-top pt-3">
-                                    <p class="small mb-1 text-muted">¿Ya tienes cuenta?</p>
+                                    <p class="small mb-1 text-muted">¿Ya tienes cuenta registrada?</p>
                                     <a href="login.php" class="text-decoration-none">
                                         Inicia sesión aquí
                                     </a>

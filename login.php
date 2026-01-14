@@ -28,21 +28,17 @@
                                 <input 
                                     type="email" 
                                     id="email" 
-                                    name="email"
                                     class="form-control" 
-                                    placeholder="correo@ejemplo.com" 
-                                    required />
+                                    placeholder="correo@ejemplo.com"/>
                             </div>
 
                             <div class="mb-4">
                                 <label for="password" class="form-label small fw-bold text-secondary">Contraseña</label>
                                 <input 
+                                    class="control" 
                                     type="password" 
                                     id="password" 
-                                    name="password"
-                                    class="form-control" 
-                                    placeholder="password" 
-                                    required />
+                                    placeholder="password"/>
                             </div>
 
                             <div class="d-grid mb-4">
