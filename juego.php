@@ -3,732 +3,242 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drift Racing Game</title>
+    <title>Drift Racing</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/konva/8.4.3/konva.min.js"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            background: #2c2c2c;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            overflow: hidden;
-        }
-
-        #game-container {
-            position: relative;
-            width: 800px;
-            height: 600px;
-            background: #1a1a1a;
-            border: 2px solid #444;
-            overflow: hidden;
-        }
-
-        #menu-screen, #circuit-select, #game-over {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: #1a1a1a;
-            z-index: 10;
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        h1 {
-            font-size: 48px;
-            color: #fff;
-            margin-bottom: 20px;
-        }
-
-        @keyframes glow {
-            0%, 100% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.3); }
-            50% { text-shadow: 0 0 15px rgba(255, 255, 255, 0.5); }
-        }
-
-        .subtitle {
-            font-size: 18px;
-            color: #999;
-            margin-bottom: 30px;
-        }
-
-        button {
-            padding: 12px 30px;
-            font-size: 16px;
-            font-weight: normal;
-            color: #fff;
-            background: #444;
-            border: 1px solid #666;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            margin: 10px;
-        }
-
-        button:hover {
-            background: #555;
-            border-color: #777;
-        }
-
-        .circuit-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .circuit-card {
-            width: 280px;
-            padding: 20px;
-            background: #222;
-            border: 1px solid #444;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .circuit-card:hover {
-            background: #2a2a2a;
-            border-color: #666;
-        }
-
-        .circuit-card h3 {
-            color: #fff;
-            font-size: 20px;
-            margin-bottom: 8px;
-            font-weight: normal;
-        }
-
-        .circuit-card p {
-            color: #888;
-            font-size: 13px;
-        }
-
-        .circuit-preview {
-            width: 100%;
-            height: 100px;
-            margin-top: 10px;
-            border: 1px solid #333;
-            overflow: hidden;
-        }
-
-        #hud {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            color: #fff;
-            font-size: 16px;
-            z-index: 5;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 10px 15px;
-            border: 1px solid #444;
-        }
-
-        #hud div {
-            margin: 5px 0;
-        }
-
-        .drift-indicator {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 32px;
-            font-weight: bold;
-            color: #ffd700;
-            z-index: 5;
-            pointer-events: none;
-        }
-
-        @keyframes driftPulse {
-            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
-            50% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-            100% { opacity: 0; transform: translate(-50%, -50%) scale(1); }
-        }
-
-        .leaderboard {
-            margin-top: 20px;
-            width: 400px;
-            background: #222;
-            border: 1px solid #444;
-            padding: 15px;
-        }
-
-        .leaderboard h3 {
-            color: #fff;
-            margin-bottom: 10px;
-            text-align: center;
-            font-weight: normal;
-        }
-
-        .leaderboard-entry {
-            display: flex;
-            justify-content: space-between;
-            color: #999;
-            padding: 8px;
-            border-bottom: 1px solid #333;
-        }
-
-        .leaderboard-entry:last-child {
-            border-bottom: none;
-        }
-
-        .leaderboard-entry.highlight {
-            background: #2a2a2a;
-            color: #fff;
-        }
-
-        #konva-container {
-            width: 100%;
-            height: 100%;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial; background: #2c2c2c; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        #container { position: relative; width: 800px; height: 600px; background: #1a1a1a; border: 2px solid #444; }
+        .screen { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #1a1a1a; z-index: 10; }
+        .screen.hidden { display: none; }
+        h1 { color: #fff; font-size: 48px; margin-bottom: 20px; }
+        .subtitle { font-size: 18px; color: #999; margin-bottom: 30px; }
+        button { padding: 12px 30px; font-size: 16px; color: #fff; background: #444; border: 1px solid #666; cursor: pointer; margin: 10px; }
+        button:hover { background: #555; }
+        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 30px; }
+        .card { width: 280px; padding: 20px; background: #222; border: 1px solid #444; cursor: pointer; }
+        .card:hover { background: #2a2a2a; border-color: #666; }
+        .card h3 { color: #fff; font-size: 20px; margin-bottom: 8px; }
+        .card p { color: #888; font-size: 13px; }
+        .preview { width: 100%; height: 100px; margin-top: 10px; border: 1px solid #333; }
+        #hud { position: absolute; top: 10px; left: 10px; color: #fff; background: rgba(0,0,0,0.7); padding: 10px 15px; z-index: 5; border: 1px solid #444; font-size: 16px; }
+        #hud div { margin: 5px 0; }
+        #drift { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 32px; font-weight: bold; color: #ffd700; z-index: 5; opacity: 0; pointer-events: none; }
+        @keyframes pulse { 0%, 100% { opacity: 0; } 50% { opacity: 1; } }
+        .leaderboard { margin-top: 20px; width: 400px; background: #222; border: 1px solid #444; padding: 15px; }
+        .leaderboard h3 { color: #fff; margin-bottom: 10px; text-align: center; }
+        .entry { display: flex; justify-content: space-between; color: #999; padding: 8px; border-bottom: 1px solid #333; }
+        .entry:last-child { border-bottom: none; }
+        .entry.highlight { background: #2a2a2a; color: #fff; }
     </style>
 </head>
 <body>
-    <div id="game-container">
-        <!-- Menú principal -->
-        <div id="menu-screen">
-            <h1>🏎️ DRIFT RACING</h1>
+    <div id="container">
+        <div id="konva"></div>
+        <div id="menu" class="screen">
+            <h1>DRIFT RACING</h1>
             <p class="subtitle">¡Domina las curvas y gana puntos con el drift!</p>
-            <button onclick="showCircuitSelect()">PULSA PARA EMPEZAR</button>
+            <button onclick="showScreen('circuits')">PULSA PARA EMPEZAR</button>
         </div>
-
-        <!-- Selección de circuito -->
-        <div id="circuit-select" class="hidden">
+        <div id="circuits" class="screen hidden">
             <h1>ELIGE TU CIRCUITO</h1>
-            <div class="circuit-grid">
-                <div class="circuit-card" onclick="startGame(0)">
-                    <h3>🏁 Circuito Oval</h3>
+            <div class="grid">
+                <div class="card" onclick="start(0)">
+                    <h3>Circuito Oval</h3>
                     <p>Perfecto para principiantes</p>
-                    <div class="circuit-preview" id="preview-0"></div>
+                    <div class="preview" id="p0"></div>
                 </div>
-                <div class="circuit-card" onclick="startGame(1)">
-                    <h3>🌊 Circuito Serpiente</h3>
+                <div class="card" onclick="start(1)">
+                    <h3>Circuito Serpiente</h3>
                     <p>Curvas técnicas y desafiantes</p>
-                    <div class="circuit-preview" id="preview-1"></div>
+                    <div class="preview" id="p1"></div>
                 </div>
-                <div class="circuit-card" onclick="startGame(2)">
-                    <h3>⚡ Circuito Relámpago</h3>
+                <div class="card" onclick="start(2)">
+                    <h3>Circuito Relámpago</h3>
                     <p>Para expertos del drift</p>
-                    <div class="circuit-preview" id="preview-2"></div>
+                    <div class="preview" id="p2"></div>
                 </div>
-                <div class="circuit-card" onclick="startGame(3)">
-                    <h3>🔥 Circuito Infernal</h3>
+                <div class="card" onclick="start(3)">
+                    <h3>Circuito Infernal</h3>
                     <p>El desafío definitivo</p>
-                    <div class="circuit-preview" id="preview-3"></div>
+                    <div class="preview" id="p3"></div>
                 </div>
             </div>
         </div>
-
-        <!-- HUD del juego -->
+        <div id="results" class="screen hidden">
+            <h1>¡CARRERA COMPLETADA!</h1>
+            <div style="color:#fff;font-size:24px;margin:20px 0;">
+                <div>Puntos Finales: <span id="fs" style="color:#ffd700;">0</span></div>
+                <div>Tiempo Total: <span id="ft" style="color:#667eea;">0.0</span>s</div>
+            </div>
+            <div class="leaderboard" id="leaderboard"></div>
+            <div>
+                <button onclick="showScreen('circuits')">ELEGIR OTRO CIRCUITO</button>
+                <button onclick="showScreen('menu')">MENÚ PRINCIPAL</button>
+            </div>
+        </div>
+        
         <div id="hud" class="hidden">
             <div>Vuelta: <span id="lap">1</span>/3</div>
             <div>Puntos: <span id="score">0</span></div>
             <div>Tiempo: <span id="time">0.0</span>s</div>
-            <div id="drift-bonus" style="color: #ffd700;"></div>
+            <div id="db" style="color:#ffd700;"></div>
         </div>
-
-        <!-- Pantalla de Game Over -->
-        <div id="game-over" class="hidden">
-            <h1>🏆 ¡CARRERA COMPLETADA!</h1>
-            <div style="color: #fff; font-size: 24px; margin: 20px 0;">
-                <div>Puntos Finales: <span id="final-score" style="color: #ffd700;">0</span></div>
-                <div>Tiempo Total: <span id="final-time" style="color: #667eea;">0.0</span>s</div>
-            </div>
-            <div class="leaderboard" id="leaderboard"></div>
-            <div>
-                <button onclick="showCircuitSelect()">ELEGIR OTRO CIRCUITO</button>
-                <button onclick="location.reload()">MENÚ PRINCIPAL</button>
-            </div>
-        </div>
-
-        <!-- Canvas de Konva -->
-        <div id="konva-container"></div>
+        <div id="drift"></div>
     </div>
-
     <script>
-        // Esperar a que Konva se cargue y el DOM esté listo
-        (function() {
-            function checkKonvaAndInit() {
-                if (typeof Konva !== 'undefined') {
-                    initGame();
-                } else {
-                    setTimeout(checkKonvaAndInit, 100);
-                }
-            }
-            
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', checkKonvaAndInit);
-            } else {
-                checkKonvaAndInit();
-            }
-        })();
-
-        // Configuración del juego
-        const CANVAS_WIDTH = 800;
-        const CANVAS_HEIGHT = 600;
-        const CAR_SIZE = 30;
-        const MAX_SPEED = 6;
-        const ACCELERATION = 0.2;
-        const FRICTION = 0.96;
-        const TURN_SPEED = 0.06;
-        const DRIFT_THRESHOLD = 2.5;
-
-        // Variables del juego
-        let stage, layer;
-        let car;
-        let currentCircuit = null;
-        let checkpoints = [];
-        let currentCheckpoint = 0;
-        let lap = 1;
-        let score = 0;
-        let startTime = null;
-        let gameLoop = null;
-        let keys = {};
-        let carState = {
-            x: 100,
-            y: 300,
-            angle: 0,
-            speed: 0,
-            driftAngle: 0
-        };
-        let driftPoints = 0;
-        let lastDriftTime = 0;
-
-        // Definición de circuitos
         const circuits = [
-            {
-                name: 'Oval',
-                color: '#3b82f6',
-                points: [
-                    [150, 200], [650, 200], [650, 400], [150, 400]
-                ],
-                startPos: { x: 150, y: 300, angle: 0 }
-            },
-            {
-                name: 'Serpiente',
-                color: '#10b981',
-                points: [
-                    [100, 300], [300, 150], [500, 150], [700, 300],
-                    [700, 450], [400, 450], [200, 300]
-                ],
-                startPos: { x: 100, y: 300, angle: 0 }
-            },
-            {
-                name: 'Relámpago',
-                color: '#f59e0b',
-                points: [
-                    [150, 150], [650, 150], [650, 250], [150, 250],
-                    [150, 350], [650, 350], [650, 450], [150, 450]
-                ],
-                startPos: { x: 150, y: 200, angle: 0 }
-            },
-            {
-                name: 'Infernal',
-                color: '#ef4444',
-                points: [
-                    [400, 120], [600, 200], [650, 380], [450, 480],
-                    [200, 420], [150, 240], [300, 140]
-                ],
-                startPos: { x: 400, y: 120, angle: 0 }
-            }
+            {name:'Oval', pts:[[150,200],[650,200],[650,400],[150,400]], col:'#3b82f6', start:{x:150,y:300,a:0}},
+            {name:'Serpiente', pts:[[100,300],[300,150],[500,150],[700,300],[700,450],[400,450],[200,300]], col:'#10b981', start:{x:100,y:300,a:0}},
+            {name:'Relámpago', pts:[[150,150],[650,150],[650,250],[150,250],[150,350],[650,350],[650,450],[150,450]], col:'#f59e0b', start:{x:150,y:200,a:0}},
+            {name:'Infernal', pts:[[400,120],[600,200],[650,380],[450,480],[200,420],[150,240],[300,140]], col:'#ef4444', start:{x:400,y:120,a:0}}
         ];
-
-        // Inicializar el juego
-        function initGame() {
-            initKonva();
-            createPreviews();
-            setupKeyboardControls();
-        }
-
-        // Inicializar Konva
-        function initKonva() {
-            stage = new Konva.Stage({
-                container: 'konva-container',
-                width: CANVAS_WIDTH,
-                height: CANVAS_HEIGHT
-            });
-
+        
+        let stage, layer, car, circ, cps=[], cpIdx=0, lap=1, score=0, t0, keys={}, loop, state, dp=0, lastD=0;
+        
+        function init() {
+            if (typeof Konva === 'undefined') return setTimeout(init, 100);
+            stage = new Konva.Stage({ container: 'konva', width: 800, height: 600 });
             layer = new Konva.Layer();
             stage.add(layer);
-        }
-
-        // Crear vistas previas de circuitos
-        function createPreviews() {
-            circuits.forEach((circuit, index) => {
-                const previewStage = new Konva.Stage({
-                    container: `preview-${index}`,
-                    width: 268,
-                    height: 120
-                });
-
-                const previewLayer = new Konva.Layer();
-                previewStage.add(previewLayer);
-
-                const line = new Konva.Line({
-                    points: circuit.points.flat().map((v, i) => 
-                        i % 2 === 0 ? v * 0.335 : v * 0.2
-                    ),
-                    stroke: circuit.color,
-                    strokeWidth: 8,
-                    closed: true,
-                    lineJoin: 'round'
-                });
-
-                previewLayer.add(line);
-                previewLayer.draw();
+            circuits.forEach((c, i) => {
+                const ps = new Konva.Stage({ container: `p${i}`, width: 268, height: 100 });
+                const pl = new Konva.Layer();
+                ps.add(pl);
+                pl.add(new Konva.Line({ points:c.pts.flat().map((v,j) => j%2===0 ? v*0.335 : v*0.167), stroke:c.col, strokeWidth:8, closed:true, lineJoin:'round' }));
+                pl.draw();
             });
         }
-
-        // Configurar controles de teclado
-        function setupKeyboardControls() {
-            window.addEventListener('keydown', (e) => {
-                keys[e.key] = true;
-                e.preventDefault();
-            });
-
-            window.addEventListener('keyup', (e) => {
-                keys[e.key] = false;
-                e.preventDefault();
-            });
+        
+        function showScreen(screenId) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
+            document.getElementById(screenId).classList.remove('hidden');
         }
-
-        // Mostrar selección de circuito
-        function showCircuitSelect() {
-            document.getElementById('menu-screen').classList.add('hidden');
-            document.getElementById('circuit-select').classList.remove('hidden');
-            document.getElementById('game-over').classList.add('hidden');
-        }
-
-        // Iniciar el juego
-        function startGame(circuitIndex) {
-            currentCircuit = circuits[circuitIndex];
-            document.getElementById('circuit-select').classList.add('hidden');
+        
+        function start(i) {
+            circ = circuits[i];
+            document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
             document.getElementById('hud').classList.remove('hidden');
-
-            // Reiniciar variables
-            lap = 1;
-            score = 0;
-            currentCheckpoint = 0;
-            startTime = Date.now();
-            carState = {
-                x: currentCircuit.startPos.x,
-                y: currentCircuit.startPos.y,
-                angle: currentCircuit.startPos.angle,
-                speed: 0,
-                driftAngle: 0
-            };
-
-            updateHUD();
-            createCircuit();
-            createCar();
+            lap=1; score=0; cpIdx=0; t0=Date.now(); dp=0;
+            state = {...circ.start, spd:0, drift:0};
+            layer.destroyChildren();
             
-            if (gameLoop) cancelAnimationFrame(gameLoop);
-            gameLoop = requestAnimationFrame(update);
-        }
-
-        // Crear el circuito
-        function createCircuit() {
-            // Limpiar layer si existe
-            if (layer) {
-                layer.destroyChildren();
-            }
+            layer.add(new Konva.Rect({ x:0, y:0, width:800, height:600, fill:'#1a1a2e' }));
+            layer.add(new Konva.Line({ points:circ.pts.flat(), stroke:'#333', strokeWidth:80, closed:true, lineJoin:'round' }));
+            layer.add(new Konva.Line({ points:circ.pts.flat(), stroke:'#2a2a3e', strokeWidth:60, closed:true, lineJoin:'round' }));
+            layer.add(new Konva.Line({ points:circ.pts.flat(), stroke:circ.col, strokeWidth:3, closed:true, lineJoin:'round', dash:[15,10], opacity:0.6 }));
             
-            // Fondo del circuito
-            const background = new Konva.Rect({
-                x: 0,
-                y: 0,
-                width: CANVAS_WIDTH,
-                height: CANVAS_HEIGHT,
-                fill: '#1a1a2e'
+            cps = circ.pts.map((p,j) => {
+                const cp = new Konva.Circle({ x:p[0], y:p[1], radius:20, fill:j===0?'#ffd700':'#555', stroke:'#fff', strokeWidth:2, opacity:0.7 });
+                layer.add(cp);
+                return cp;
             });
-            layer.add(background);
-
-            // Pista exterior
-            const outerTrack = new Konva.Line({
-                points: currentCircuit.points.flat(),
-                stroke: '#333',
-                strokeWidth: 80,
-                closed: true,
-                lineJoin: 'round'
-            });
-            layer.add(outerTrack);
-
-            // Pista interior
-            const innerTrack = new Konva.Line({
-                points: currentCircuit.points.flat(),
-                stroke: '#2a2a3e',
-                strokeWidth: 60,
-                closed: true,
-                lineJoin: 'round'
-            });
-            layer.add(innerTrack);
-
-            // Línea central
-            const centerLine = new Konva.Line({
-                points: currentCircuit.points.flat(),
-                stroke: currentCircuit.color,
-                strokeWidth: 3,
-                closed: true,
-                lineJoin: 'round',
-                dash: [15, 10],
-                opacity: 0.6
-            });
-            layer.add(centerLine);
-
-            // Checkpoints
-            checkpoints = [];
-            for (let i = 0; i < currentCircuit.points.length; i++) {
-                const checkpoint = new Konva.Circle({
-                    x: currentCircuit.points[i][0],
-                    y: currentCircuit.points[i][1],
-                    radius: 20,
-                    fill: i === 0 ? '#ffd700' : '#555',
-                    stroke: '#fff',
-                    strokeWidth: 2,
-                    opacity: 0.7
-                });
-                checkpoints.push(checkpoint);
-                layer.add(checkpoint);
-            }
-        }
-
-        // Crear el coche
-        function createCar() {
-            car = new Konva.Group({
-                x: carState.x,
-                y: carState.y,
-                rotation: carState.angle * 180 / Math.PI
-            });
-
-            // Cuerpo del coche
-            const carBody = new Konva.Rect({
-                x: -CAR_SIZE / 2,
-                y: -CAR_SIZE / 2,
-                width: CAR_SIZE,
-                height: CAR_SIZE,
-                fill: '#ff0000',
-                cornerRadius: 4,
-                shadowColor: 'black',
-                shadowBlur: 10,
-                shadowOffset: { x: 0, y: 0 },
-                shadowOpacity: 0.5
-            });
-
-            // Frente del coche (amarillo)
-            const carFront = new Konva.Rect({
-                x: CAR_SIZE / 2 - 3,
-                y: -CAR_SIZE / 3,
-                width: 5,
-                height: CAR_SIZE * 2 / 3,
-                fill: '#ffff00',
-                cornerRadius: 2
-            });
-
-            // Ventanas
-            const window1 = new Konva.Rect({
-                x: -CAR_SIZE / 4,
-                y: -CAR_SIZE / 3,
-                width: CAR_SIZE / 2,
-                height: CAR_SIZE / 4,
-                fill: '#88ccff',
-                cornerRadius: 2
-            });
-
-            car.add(carBody);
-            car.add(window1);
-            car.add(carFront);
+            
+            car = new Konva.Group({ x:state.x, y:state.y, rotation:state.a*180/Math.PI });
+            car.add(new Konva.Rect({ x:-15, y:-15, width:30, height:30, fill:'#ff0000', cornerRadius:4, shadowColor:'black', shadowBlur:10, shadowOpacity:0.5 }));
+            car.add(new Konva.Rect({ x:12, y:-10, width:5, height:20, fill:'#ffff00', cornerRadius:2 }));
+            car.add(new Konva.Rect({ x:-7, y:-10, width:15, height:7, fill:'#88ccff', cornerRadius:2 }));
             layer.add(car);
             layer.draw();
+            
+            if(loop) cancelAnimationFrame(loop);
+            loop = requestAnimationFrame(update);
         }
-
-        // Actualizar el juego
+        
         function update() {
-            // Controles
-            if (keys['ArrowUp'] || keys['w'] || keys['W']) {
-                carState.speed = Math.min(carState.speed + ACCELERATION, MAX_SPEED);
-            } else if (keys['ArrowDown'] || keys['s'] || keys['S']) {
-                carState.speed = Math.max(carState.speed - ACCELERATION, -MAX_SPEED / 2);
-            }
-
-            let isDrifting = false;
-            if (Math.abs(carState.speed) > 0.5) {
-                if (keys['ArrowLeft'] || keys['a'] || keys['A']) {
-                    carState.angle -= TURN_SPEED * Math.abs(carState.speed) / MAX_SPEED;
-                    if (Math.abs(carState.speed) > DRIFT_THRESHOLD) {
-                        carState.driftAngle += 0.03;
-                        isDrifting = true;
-                    }
+            if(keys.ArrowUp||keys.w||keys.W) state.spd = Math.min(state.spd + 0.2, 6);
+            else if(keys.ArrowDown||keys.s||keys.S) state.spd = Math.max(state.spd - 0.2, -3);
+            
+            let drifting = false;
+            if(Math.abs(state.spd) > 0.5) {
+                if(keys.ArrowLeft||keys.a||keys.A) {
+                    state.a -= 0.06 * Math.abs(state.spd) / 6;
+                    if(Math.abs(state.spd) > 2.5) { state.drift += 0.03; drifting = true; }
                 }
-                if (keys['ArrowRight'] || keys['d'] || keys['D']) {
-                    carState.angle += TURN_SPEED * Math.abs(carState.speed) / MAX_SPEED;
-                    if (Math.abs(carState.speed) > DRIFT_THRESHOLD) {
-                        carState.driftAngle -= 0.03;
-                        isDrifting = true;
-                    }
+                if(keys.ArrowRight||keys.d||keys.D) {
+                    state.a += 0.06 * Math.abs(state.spd) / 6;
+                    if(Math.abs(state.spd) > 2.5) { state.drift -= 0.03; drifting = true; }
                 }
             }
-
-            // Puntos de drift
-            if (isDrifting && Math.abs(carState.driftAngle) > 0.05) {
-                const driftBonus = Math.floor(Math.abs(carState.driftAngle) * 20);
-                driftPoints += driftBonus;
-                score += driftBonus;
-                
+            
+            if(drifting && Math.abs(state.drift) > 0.05) {
+                const db = Math.floor(Math.abs(state.drift) * 20);
+                dp += db; score += db;
                 const now = Date.now();
-                if (now - lastDriftTime > 300) {
-                    showDriftIndicator(driftBonus);
-                    lastDriftTime = now;
+                if(now - lastD > 300) {
+                    const d = document.getElementById('drift');
+                    d.textContent = `+${db} DRIFT!`;
+                    d.style.animation = 'pulse 0.5s';
+                    setTimeout(() => d.style.animation = '', 500);
+                    lastD = now;
                 }
-                
-                document.getElementById('drift-bonus').textContent = `Drift: +${driftPoints}`;
-            } else {
-                if (driftPoints > 0) {
-                    driftPoints = 0;
-                    document.getElementById('drift-bonus').textContent = '';
-                }
+                document.getElementById('db').textContent = `Drift: +${dp}`;
+            } else if(dp > 0) {
+                dp = 0;
+                document.getElementById('db').textContent = '';
             }
-
-            carState.driftAngle *= 0.92;
-            carState.speed *= FRICTION;
-
-            // Movimiento
-            const moveAngle = carState.angle + carState.driftAngle;
-            carState.x += Math.cos(moveAngle) * carState.speed;
-            carState.y += Math.sin(moveAngle) * carState.speed;
-
-            // Límites del canvas
-            carState.x = Math.max(CAR_SIZE, Math.min(CANVAS_WIDTH - CAR_SIZE, carState.x));
-            carState.y = Math.max(CAR_SIZE, Math.min(CANVAS_HEIGHT - CAR_SIZE, carState.y));
-
-            // Actualizar posición del coche
-            car.position({ x: carState.x, y: carState.y });
-            car.rotation(carState.angle * 180 / Math.PI);
-
-            // Verificar checkpoints
-            checkCheckpoints();
-
-            // Actualizar HUD
-            updateHUD();
-
-            layer.batchDraw();
-            gameLoop = requestAnimationFrame(update);
-        }
-
-        // Verificar checkpoints
-        function checkCheckpoints() {
-            const checkpoint = checkpoints[currentCheckpoint];
-            const dx = carState.x - checkpoint.x();
-            const dy = carState.y - checkpoint.y();
-            const distance = Math.sqrt(dx * dx + dy * dy);
-
-            if (distance < 40) {
+            
+            state.drift *= 0.92;
+            state.spd *= 0.96;
+            const ma = state.a + state.drift;
+            state.x += Math.cos(ma) * state.spd;
+            state.y += Math.sin(ma) * state.spd;
+            state.x = Math.max(30, Math.min(770, state.x));
+            state.y = Math.max(30, Math.min(570, state.y));
+            
+            car.position({ x:state.x, y:state.y });
+            car.rotation(state.a * 180 / Math.PI);
+            
+            const cp = cps[cpIdx];
+            const dx = state.x - cp.x(), dy = state.y - cp.y();
+            if(Math.sqrt(dx*dx + dy*dy) < 40) {
                 score += 50;
-                currentCheckpoint++;
-
-                if (currentCheckpoint >= checkpoints.length) {
-                    currentCheckpoint = 0;
+                cpIdx++;
+                if(cpIdx >= cps.length) {
+                    cpIdx = 0;
                     lap++;
                     score += 200;
-
-                    if (lap > 3) {
-                        endGame();
-                        return;
-                    }
+                    if(lap > 3) { end(); return; }
                 }
-
-                // Actualizar colores de checkpoints
-                checkpoints.forEach((cp, i) => {
-                    cp.fill(i === currentCheckpoint ? '#ffd700' : '#555');
-                });
+                cps.forEach((c,j) => c.fill(j===cpIdx?'#ffd700':'#555'));
             }
-        }
-
-        // Mostrar indicador de drift
-        function showDriftIndicator(points) {
-            const indicator = document.createElement('div');
-            indicator.className = 'drift-indicator';
-            indicator.style.animation = 'driftPulse 0.5s ease-in-out';
-            indicator.textContent = `+${points} DRIFT!`;
-            document.getElementById('game-container').appendChild(indicator);
-            setTimeout(() => indicator.remove(), 500);
-        }
-
-        // Actualizar HUD
-        function updateHUD() {
+            
             document.getElementById('lap').textContent = lap;
             document.getElementById('score').textContent = score;
-            if (startTime) {
-                const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
-                document.getElementById('time').textContent = elapsed;
-            }
-        }
-
-        // Finalizar el juego
-        function endGame() {
-            cancelAnimationFrame(gameLoop);
-            const finalTime = ((Date.now() - startTime) / 1000).toFixed(1);
-
-            document.getElementById('final-score').textContent = score;
-            document.getElementById('final-time').textContent = finalTime;
-
-            // Guardar en clasificación
-            saveToLeaderboard(score, finalTime, currentCircuit.name);
-            displayLeaderboard();
-
-            document.getElementById('hud').classList.add('hidden');
-            document.getElementById('game-over').classList.remove('hidden');
-        }
-
-        // Guardar en clasificación
-        function saveToLeaderboard(finalScore, time, circuit) {
-            let leaderboard = JSON.parse(localStorage.getItem('driftLeaderboard') || '[]');
-            const entry = {
-                score: finalScore,
-                time: parseFloat(time),
-                circuit: circuit,
-                date: new Date().toLocaleDateString()
-            };
-            leaderboard.push(entry);
-            leaderboard.sort((a, b) => b.score - a.score);
-            leaderboard = leaderboard.slice(0, 10);
-            localStorage.setItem('driftLeaderboard', JSON.stringify(leaderboard));
-        }
-
-        // Mostrar clasificación
-        function displayLeaderboard() {
-            const leaderboard = JSON.parse(localStorage.getItem('driftLeaderboard') || '[]');
-            const leaderboardDiv = document.getElementById('leaderboard');
+            document.getElementById('time').textContent = ((Date.now() - t0) / 1000).toFixed(1);
             
-            let html = '<h3>🏆 TOP 10 CLASIFICACIÓN</h3>';
-            leaderboard.forEach((entry, index) => {
-                const isLatest = index === 0;
-                html += `
-                    <div class="leaderboard-entry ${isLatest ? 'highlight' : ''}">
-                        <span>${index + 1}. ${entry.circuit}</span>
-                        <span>${entry.score} pts - ${entry.time}s</span>
-                    </div>
-                `;
+            layer.batchDraw();
+            loop = requestAnimationFrame(update);
+        }
+        
+        function end() {
+            cancelAnimationFrame(loop);
+            const ft = ((Date.now() - t0) / 1000).toFixed(1);
+            document.getElementById('fs').textContent = score;
+            document.getElementById('ft').textContent = ft;
+            
+            let lb = JSON.parse(localStorage.getItem('driftLB') || '[]');
+            lb.push({score:score, time:parseFloat(ft), circuit:circ.name});
+            lb.sort((a,b) => b.score - a.score);
+            lb = lb.slice(0, 10);
+            localStorage.setItem('driftLB', JSON.stringify(lb));
+            
+            let html = '<h3>TOP 10 CLASIFICACIÓN</h3>';
+            lb.forEach((e, i) => {
+                html += `<div class="entry ${i===0?'highlight':''}"><span>${i+1}. ${e.circuit}</span><span>${e.score} pts - ${e.time}s</span></div>`;
             });
+            if(lb.length === 0) html += '<p style="color:#a0a0b0;text-align:center;">No hay registros aún</p>';
+            document.getElementById('leaderboard').innerHTML = html;
             
-            if (leaderboard.length === 0) {
-                html += '<p style="color: #a0a0b0; text-align: center;">No hay registros aún</p>';
-            }
-            
-            leaderboardDiv.innerHTML = html;
+            document.getElementById('hud').classList.add('hidden');
+            showScreen('results');
         }
+        
+        window.addEventListener('keydown', e => { keys[e.key] = true; e.preventDefault(); });
+        window.addEventListener('keyup', e => { keys[e.key] = false; e.preventDefault(); });
+        
+        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+        else init();
     </script>
 </body>
 </html>
