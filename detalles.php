@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalles del Producto - Kairos</title>
+    <title>Detalles - Kairos</title>
     <?php include("includes/head-tag-contents.php"); ?>
 </head>
 <body>
@@ -13,33 +13,32 @@
         <?php include("includes/carrito.php"); ?>
     </header>
 
-    <main class="details-main">
+    <main class="detalles-main">
         <div class="container-fluid">
-            <div class="details-container">
+            <div class="detalles-container">
                 
                 <div class="row g-3 mb-4">
                     <div class="col-12 col-lg-4">
-                        <div class="details-image">
-                            <img src="assets/img/fifa-22.jpg">
+                        <div class="detalles-image">
+                            <img src="assets/img/juego.jpg">
                         </div>
                     </div>
 
                     <div class="col-12 col-lg-8">
-                        <div class="details-info">
-                            <h1 class="details-title">EA SPORTS FC 25</h1>
+                        <div class="detalles-info">
+                            <h1 class="detalles-title">Red Dead Redemption 2</h1>
                             
-                            <div class="details-meta">
-                                <p><strong>Género:</strong> Deportes</p>
-                                <p><strong>Modo:</strong> Singleplayer / Multiplayer Online</p>
+                            <div class="detalles-meta">
+                                <p><strong>Género:</strong> Acción</p>
                             </div>
 
-                            <div class="details-description">
-                                <p>Fútbol con nuevas animaciones, modos renovados y mejoras de jugabilidad orientadas al competitivo.</p>
+                            <div class="detalles-description">
+                                <p>Vive la vida del mejor mercenario y situate con su banda para intentar ser ricos.</p>
                             </div>
 
-                            <div class="details-price-section">
-                                <div class="details-price">49.99€</div>
-                                <button class="details-add-btn">AÑADIR AL CARRITO</button>
+                            <div class="detalles-price-section">
+                                <div class="detalles-price">15.99€</div>
+                                <button class="detalles-add-btn">AÑADIR AL CARRITO</button>
                             </div>
                         </div>
                     </div>
@@ -47,33 +46,37 @@
 
                 <div class="row mb-3">
                     <div class="col-12">
-                        <h2 class="requirements-title">REQUISITOS DEL SISTEMA</h2>
+                        <h2 class="requerimientos-title">REQUISITOS DEL SISTEMA</h2>
                     </div>
                 </div>
 
                 <div class="row g-3">
                     <div class="col-12 col-md-6">
-                        <div class="requirements-card">
-                            <h3 class="requirements-subtitle">MÍNIMOS</h3>
-                            <ul class="requirements-list">
-                                <li><strong>SO:</strong> Windows 10/11 64-bit</li>
-                                <li><strong>Procesador:</strong> Intel i5-6600K / AMD Ryzen 5 1600</li>
+                        <div class="requerimientos-card">
+                            <h3 class="requerimientos-subtitle">REQUISITOS MÍNIMOS</h3>
+                            <ul class="requerimientos-list">
+                                <li><strong>SO:</strong> Windows 10 64-bit</li>
+                                <li><strong>Procesador:</strong> Intel Core i5-4670K / AMD Ryzen FX-9590</li>
                                 <li><strong>Memoria:</strong> 8 GB RAM</li>
-                                <li><strong>Gráficos:</strong> GTX 1050 Ti / RX 570</li>
-                                <li><strong>Almacenamiento:</strong> 60 GB libres</li>
+                                <li><strong>Gráficos:</strong> Nvidia GeForce GTX 960 / AMD Radeon R7 360</li>
+                                <li><strong>DirectX:</strong>Version 12</li>
+                                <li><strong>Almacenamiento:</strong> 12 GB de espacio disponible</li>
+                                <li><strong>Tarjeta de sonido:</strong>Direct X Compatible</li>
                             </ul>
                         </div>
                     </div>
 
                     <div class="col-12 col-md-6">
-                        <div class="requirements-card">
-                            <h3 class="requirements-subtitle">RECOMENDADOS</h3>
-                            <ul class="requirements-list">
-                                <li><strong>SO:</strong> Windows 11 64-bit</li>
-                                <li><strong>Procesador:</strong> Intel i7-8700 / Ryzen 5 3600</li>
+                        <div class="requerimientos-card">
+                            <h3 class="requerimientos-subtitle">REQUISITOS RECOMENDADOS</h3>
+                            <ul class="requerimientos-list">
+                                <li><strong>SO:</strong> Windows 10 64-bit</li>
+                                <li><strong>Procesador:</strong> Intel Core i5-8500 / AMD Ryzen 5 3500X</li>
                                 <li><strong>Memoria:</strong> 16 GB RAM</li>
-                                <li><strong>Gráficos:</strong> RTX 3060 / RX 6600 XT</li>
-                                <li><strong>Almacenamiento:</strong> 80 GB SSD</li>
+                                <li><strong>Gráficos:</strong> Nvidia GeForce GTX 2070 / AMD Radeon RX 5700 XT</li>
+                                <li><strong>DirectX:</strong>Version 12</li>
+                                <li><strong>Almacenamiento:</strong> 12 GB de espacio disponible</li>
+                                <li><strong>Tarjeta de sonido:</strong>Direct X Compatible</li>
                             </ul>
                         </div>
                     </div>
