@@ -1,4 +1,5 @@
 <?php
+// Iniciar sesión y configurar respuesta JSON
 session_start();
 header('Content-Type: application/json');
 
@@ -13,20 +14,16 @@ $response = ["success" => false, "message" => "Acción no válida"];
 try {
     switch ($accion) {
         
-        // ============================================
-        // LOGIN TRADICIONAL
-        // ============================================
+        // Login tradicional
         case 'login':
             $username = $_POST['username'] ?? '';
             $password = $_POST['password'] ?? '';
             
             $response = $controller->login($username, $password);
             
-            // Si el login fue exitoso, añadir información del rol y redirección
             if ($response['success']) {
                 $rol = $_SESSION['rol'] ?? 3;
                 
-                // Determinar URL de redirección según rol
                 switch ($rol) {
                     case 1: // Administrador
                         $redirectUrl = 'admin-usuarios.php';
@@ -46,9 +43,7 @@ try {
             }
             break;
         
-        // ============================================
-        // REGISTRO
-        // ============================================
+        // Registro de nuevo usuario
         case 'registrar':
             $datos = [
                 'username' => $_POST['username'] ?? '',
@@ -64,19 +59,15 @@ try {
             $response = $controller->registrar($datos);
             break;
         
-        // ============================================
-        // GOOGLE OAUTH LOGIN
-        // ============================================
+        // Login con Google
         case 'loginGoogle':
             $googleToken = $_POST['token'] ?? '';
             
             $response = $controller->loginGoogle($googleToken);
             
-            // Si el login fue exitoso, añadir información del rol y redirección
             if ($response['success']) {
                 $rol = $_SESSION['rol'] ?? 3;
                 
-                // Determinar URL de redirección según rol
                 switch ($rol) {
                     case 1: // Administrador
                         $redirectUrl = 'admin-usuarios.php';
@@ -96,21 +87,15 @@ try {
             }
             break;
         
-        // ============================================
-        // LOGOUT
-        // ============================================
+        // Cerrar sesión
         case 'logout':
             $response = $controller->logout();
             break;
         
-        // ============================================
-        // VERIFICAR SESIÓN
-        // ============================================
+        // Verificar sesión activa
         case 'verificarSesion':
             if ($controller->verificarSesion()) {
                 $usuario = $controller->usuarioActual();
-                
-                // Añadir información del rol
                 $rol = $_SESSION['rol'] ?? 3;
                 $esAdmin = ($rol == 1 || $rol == 2);
                 
@@ -130,9 +115,7 @@ try {
             }
             break;
         
-        // ============================================
-        // OBTENER USUARIO ACTUAL
-        // ============================================
+        // Obtener usuario actual
         case 'obtenerUsuario':
             $usuario = $controller->usuarioActual();
             
@@ -156,6 +139,7 @@ try {
             break;
         
         default:
+            // Acción no reconocida
             $response = ["success" => false, "message" => "Acción no encontrada"];
     }
     

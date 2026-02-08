@@ -1,7 +1,5 @@
 <?php
-// carrito-acciones.php - Procesa las acciones del carrito
-// Este archivo maneja: aumentar, disminuir, eliminar, vaciar, agregar
-
+// Procesar acciones del carrito: agregar, aumentar, disminuir, eliminar, vaciar
 include("includes/a_config.php");
 require_once __DIR__ . "/controlador/CarritoController.php";
 
@@ -19,21 +17,16 @@ $productoId = $_POST['producto_id'] ?? $_GET['producto_id'] ?? null;
 
 try {
     switch($accion) {
-        // ============================================
-        // AGREGAR PRODUCTO AL CARRITO
-        // ============================================
+        // Agregar producto
         case 'agregar':
             if ($productoId) {
                 $carritoController->agregarProducto($idUsuario, $productoId, 1);
             }
             break;
 
-        // ============================================
-        // AUMENTAR CANTIDAD
-        // ============================================
+        // Aumentar cantidad
         case 'aumentar':
             if ($productoId) {
-                // Obtener cantidad actual
                 $productos = $carritoController->obtenerProductosCarrito($idUsuario);
                 $cantidadActual = 0;
                 
@@ -44,17 +37,13 @@ try {
                     }
                 }
                 
-                // Actualizar con cantidad + 1
                 $carritoController->actualizarCantidad($idUsuario, $productoId, $cantidadActual + 1);
             }
             break;
 
-        // ============================================
-        // DISMINUIR CANTIDAD
-        // ============================================
+        // Disminuir cantidad
         case 'disminuir':
             if ($productoId) {
-                // Obtener cantidad actual
                 $productos = $carritoController->obtenerProductosCarrito($idUsuario);
                 $cantidadActual = 0;
                 
@@ -65,28 +54,22 @@ try {
                     }
                 }
                 
-                // Si cantidad es 1, eliminar el producto
                 if ($cantidadActual <= 1) {
                     $carritoController->eliminarProducto($idUsuario, $productoId);
                 } else {
-                    // Si es mayor, disminuir en 1
                     $carritoController->actualizarCantidad($idUsuario, $productoId, $cantidadActual - 1);
                 }
             }
             break;
 
-        // ============================================
-        // ELIMINAR PRODUCTO
-        // ============================================
+        // Eliminar producto
         case 'eliminar':
             if ($productoId) {
                 $carritoController->eliminarProducto($idUsuario, $productoId);
             }
             break;
 
-        // ============================================
-        // VACIAR CARRITO
-        // ============================================
+        // Vaciar carrito
         case 'vaciar':
             $carritoController->vaciarCarrito($idUsuario);
             break;

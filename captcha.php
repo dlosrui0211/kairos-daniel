@@ -1,10 +1,7 @@
 <?php
 class CaptchaMath {
     
-    /**
-     * Genera una operación matemática aleatoria y la guarda en sesión
-     * @return array ['pregunta' => '5 + 3', 'respuesta' => 8]
-     */
+    // Generar operación matemática aleatoria
     public static function generar() {
         $num1 = rand(1, 10);
         $num2 = rand(1, 10);
@@ -16,7 +13,7 @@ class CaptchaMath {
                 $respuesta = $num1 + $num2;
                 break;
             case '-':
-                // Asegurar que el resultado no sea negativo
+                // Evitar resultados negativos
                 if ($num1 < $num2) {
                     $temp = $num1;
                     $num1 = $num2;
@@ -41,11 +38,7 @@ class CaptchaMath {
         ];
     }
     
-    /**
-     * Verifica si la respuesta del usuario es correcta
-     * @param int $respuestaUsuario
-     * @return bool
-     */
+    // Verificar respuesta del usuario
     public static function verificar($respuestaUsuario) {
         // Verificar que existe captcha en sesión
         if (!isset($_SESSION['captcha_respuesta'])) {
@@ -70,18 +63,13 @@ class CaptchaMath {
         return $correcto;
     }
     
-    /**
-     * Limpia el captcha de la sesión
-     */
+    // Limpiar captcha de sesión
     public static function limpiar() {
         unset($_SESSION['captcha_respuesta']);
         unset($_SESSION['captcha_generado_en']);
     }
     
-    /**
-     * Genera el HTML del captcha
-     * @return string HTML del captcha
-     */
+    // Generar HTML del captcha
     public static function generarHTML() {
         $captcha = self::generar();
         
@@ -97,12 +85,11 @@ class CaptchaMath {
                 </p>
             </div>
             <input type="number" 
-                   id="captcha_respuesta" 
-                   name="captcha_respuesta" 
-                   class="form-control form-control-lg mt-2" 
-                   placeholder="Tu respuesta" 
-                   required 
-                   autocomplete="off">
+                id="captcha_respuesta" 
+                name="captcha_respuesta" 
+                class="form-control form-control-lg mt-2" 
+                placeholder="Tu respuesta" 
+                required>
             <small class="text-muted">Completa la operación para continuar</small>
         </div>';
         

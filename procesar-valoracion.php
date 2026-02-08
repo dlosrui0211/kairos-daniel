@@ -5,7 +5,7 @@ require_once __DIR__ . "/controller/ValoracionController.php";
 
 header('Content-Type: application/json');
 
-// Verificar que el usuario esté logueado
+// Verificar usuario logueado
 if (!isset($_SESSION['usuario_id'])) {
     echo json_encode([
         'success' => false,
@@ -17,7 +17,7 @@ if (!isset($_SESSION['usuario_id'])) {
 // Obtener datos del POST
 $data = json_decode(file_get_contents('php://input'), true);
 
-// Validar datos
+// Validar datos requeridos
 if (!isset($data['id_producto']) || !isset($data['puntuacion'])) {
     echo json_encode([
         'success' => false,
@@ -31,7 +31,7 @@ $puntuacion = (int)$data['puntuacion'];
 $comentario = isset($data['comentario']) ? trim($data['comentario']) : null;
 $id_usuario = $_SESSION['usuario_id'];
 
-// Validar que la puntuación esté entre 1 y 5
+// Puntuación debe estar entre 1 y 5
 if ($puntuacion < 1 || $puntuacion > 5) {
     echo json_encode([
         'success' => false,
@@ -40,7 +40,7 @@ if ($puntuacion < 1 || $puntuacion > 5) {
     exit;
 }
 
-// Validar que el comentario no supere 500 caracteres
+// Máximo 500 caracteres
 if ($comentario && strlen($comentario) > 500) {
     echo json_encode([
         'success' => false,
@@ -52,7 +52,6 @@ if ($comentario && strlen($comentario) > 500) {
 try {
     $valoracionController = new ValoracionController();
     
-    // Guardar la valoración
     $resultado = $valoracionController->guardarValoracion(
         $id_usuario,
         $id_producto,
