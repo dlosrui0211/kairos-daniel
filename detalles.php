@@ -1,4 +1,53 @@
-<?php include("includes/a_config.php"); ?>
+<?php 
+include("includes/a_config.php"); 
+require_once __DIR__ . "/controlador/ProductoController.php";
+require_once __DIR__ . "/controlador/CarritoController.php";
+
+// Obtener el ID del producto
+$productoId = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+
+if (!$productoId) {
+    header("Location: index.php");
+    exit();
+}
+
+$productoController = new ProductoController();
+$producto = $productoController->obtenerPorId($productoId);
+
+// Si no existe el producto, redirigir
+if (!$producto) {
+    header("Location: index.php");
+    exit();
+}
+
+// ✅ VARIABLES CON VALORES POR DEFECTO (evita warnings)
+$titulo = $producto['titulo'] ?? 'Producto sin título';
+$cover = $producto['cover'] ?? 'assets/img/placeholder.png';
+$descripcion = $producto['descripcion'] ?? 'Sin descripción disponible';
+$precio = $producto['precio'] ?? 0;
+$descuento = $producto['descuento'] ?? 0;
+$stock = $producto['stock'] ?? 0;
+$plataformaNombre = $producto['plataforma_nombre'] ?? 'Sin plataforma';
+$modoNombre = $producto['modo_nombre'] ?? 'Varios modos';
+$fechaLanzamiento = $producto['fecha_lanzamiento'] ?? null;
+
+// Calcular precio final con descuento
+$precioFinal = $productoController->calcularPrecioFinal($precio, $descuento);
+$precioOriginal = $precio;
+$descuentoTexto = $descuento > 0 ? '-' . $descuento . '%' : '';
+
+// Verificar si el usuario está logueado y si el producto está en el carrito
+$idUsuario = $_SESSION['usuario_id'] ?? null;
+$enCarrito = false;
+if ($idUsuario) {
+    $carritoController = new CarritoController();
+    $enCarrito = $carritoController->productoEnCarrito($idUsuario, $productoId);
+}
+
+// Obtener géneros del producto
+$generosProducto = $productoController->obtenerGenerosProducto($productoId);
+$generosTexto = !empty($generosProducto) ? implode(', ', array_column($generosProducto, 'nombre')) : 'Sin especificar';
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>

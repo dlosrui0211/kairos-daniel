@@ -1,4 +1,55 @@
-<?php include("includes/a_config.php"); ?>
+<?php 
+session_start();
+include("includes/a_config.php");
+require_once __DIR__ . "/config_oauth.php";
+require_once __DIR__ . "/captcha.php"; // CAPTCHA personalizado
+
+// Si ya está logueado, redirige al index
+if (isset($_SESSION['usuario_id'])) {
+    header("Location: index.php");
+    exit();
+}
+
+$error = '';
+$exito = '';
+
+// Si el formulario se envía
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    require_once __DIR__ . "/modelo/Conexion.php";
+    require_once __DIR__ . "/modelo/Usuario.php";
+    require_once __DIR__ . "/controlador/UsuarioController.php";
+    
+    $controller = new UsuarioController();
+    
+    $captchaRespuesta = $_POST['captcha_respuesta'] ?? '';
+    
+    // Verificar CAPTCHA personalizado
+    if (!CaptchaMath::verificar($captchaRespuesta)) {
+        $error = "Respuesta incorrecta al captcha. Inténtalo de nuevo.";
+    } else {
+        $datos = [
+            'username' => $_POST['username'] ?? '',
+            'password' => $_POST['password'] ?? '',
+            'nombre' => $_POST['nombre'] ?? '',
+            'apellidos' => $_POST['apellidos'] ?? '',
+            'correo' => $_POST['email'] ?? '',
+            'fecha_nacimiento' => $_POST['fecha_nacimiento'] ?? '',
+            'codigo_postal' => $_POST['codigo_postal'] ?? '',
+            'telefono' => $_POST['telefono'] ?? ''
+        ];
+        
+        $resultado = $controller->registrar($datos);
+        
+        if ($resultado['success']) {
+            $exito = $resultado['message'];
+            // Limpiar formulario
+            $_POST = [];
+        } else {
+            $error = $resultado['message'];
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>

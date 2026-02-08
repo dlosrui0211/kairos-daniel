@@ -1,5 +1,9 @@
-<?php 
-include("includes/a_config.php"); 
+<?php include("includes/a_config.php"); 
+require_once __DIR__ . "/controller/ProductoController.php";
+
+$productoController = new ProductoController();
+// PlayStation tiene ID 2 en la BD (según tu insert)
+$productos = $productoController->obtenerPorPlataforma(2);
 ?>
 <!DOCTYPE html>
 <html lang="es">

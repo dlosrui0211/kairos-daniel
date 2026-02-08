@@ -1,4 +1,29 @@
-<?php include("includes/a_config.php"); ?>
+<?php 
+include("includes/a_config.php"); 
+require_once __DIR__ . "/controlador/Productocontroller.php";
+
+$productoController = new ProductoController();
+
+// Detectar si hay un filtro de plataforma
+$platformId = isset($_GET['platform']) ? (int)$_GET['platform'] : null;
+
+// Si hay plataforma seleccionada, obtener esos productos. Si no, obtener todos
+if ($platformId) {
+    $productos = $productoController->obtenerPorPlataforma($platformId);
+    // Obtener nombre de la plataforma para el título
+    $plataformas = $productoController->obtenerPlataformas();
+    $nombrePlataforma = '';
+    foreach ($plataformas as $plat) {
+        if ($plat['id'] == $platformId) {
+            $nombrePlataforma = $plat['nombre'];
+            break;
+        }
+    }
+} else {
+    $productos = $productoController->obtenerTodos();
+    $nombrePlataforma = '';
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
