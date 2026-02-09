@@ -3,7 +3,7 @@
 Sitio web dinámico desarrollado con PHP, JavaScript, SCSS y Node.js.  
 ---
 
-## 📌 Descripción
+## Descripción
 
 **Kairos-daniel** es una aplicación web construida con tecnologías web clásicas que permite:
 
@@ -26,7 +26,7 @@ El proyecto está organizado de forma modular, facilitando su mantenimiento y am
 
 ---
 
-## 📂 Estructura del proyecto
+## Estructura del proyecto
 
 ```text
 /
@@ -57,7 +57,7 @@ y cambia a la rama ra4 con el comando
 git checkout resultado-4
 ```
 
-## 📌 Requisitos
+## Requisitos
 Servidor local compatible con PHP (XAMPP, WAMP, etc.)
 
 MySQL para la base de datos
@@ -76,13 +76,13 @@ Instala dependencias de Node si es necesario:
 ```node
 npm install
 ```
-## ▶️ Uso
+## Uso
 Inicia el servidor.(tanto de xampp como de node)
 
 Accede desde el navegador:
 http://localhost:[PUERTO]
 
-## 🧑‍💻 Autor
+##  Autor
 
 Daniel De Los Reyes Ruiz
 GitHub: https://github.com/dlosrui0211
