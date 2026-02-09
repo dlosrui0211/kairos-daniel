@@ -2,11 +2,12 @@
 // Configuración OAuth y reCAPTCHA
 
 // Google OAuth
-define('GOOGLE_CLIENT_ID', '416269202705-jr8pb3i4g82f69sm9b8r227cb2v3geu2.apps.googleusercontent.com');
+define('GOOGLE_CLIENT_ID', '649147168860-jed61np2424obrapgoel0vh4luqfjj93.apps.googleusercontent.com');
+
 
 // reCAPTCHA V2
-define('RECAPTCHA_SITE_KEY', '6LeZ0WEsAAAAAI68yF94tvvmsaYwduIMxEUwJVCt');
-define('RECAPTCHA_SECRET_KEY', '6LeZ0WEsAAAAAKCbdMBiQ2KnoGbEWbGzWZgxJp3d');
+define('RECAPTCHA_SITE_KEY', '6LfgemUsAAAAADc1pboMlckapMFMHt3NIMS9UBlu');
+define('RECAPTCHA_SECRET_KEY', '6LfgemUsAAAAAFR3Q8ufXwFxssKOg9OMwGGlImqU');
 
 // Cookies
 define('COOKIE_NAME', 'kairos_remember');

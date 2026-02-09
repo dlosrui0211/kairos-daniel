@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__ . "/../model/Conexion.php";
-require_once __DIR__ . "/../model/Usuario.php";
+require_once __DIR__ . "/../modelo/Conexion.php";
+require_once __DIR__ . "/../modelo/Usuario.php";
 require_once __DIR__ . "/../config_oauth.php";
 
 

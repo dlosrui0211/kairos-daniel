@@ -3,9 +3,9 @@
 session_start();
 header('Content-Type: application/json');
 
-require_once "modelo/Conexion.php";
-require_once "modelo/Usuario.php";
-require_once "controlador/UsuarioController.php";
+require_once __DIR__ . "modelo/Conexion.php";
+require_once __DIR__ . "/modelo/Usuario.php";
+require_once __DIR__ . "/controlador/UsuarioController.php";
 
 $controller = new UsuarioController();
 $accion = $_POST['accion'] ?? $_GET['accion'] ?? null;

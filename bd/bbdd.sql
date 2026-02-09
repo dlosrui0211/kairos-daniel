@@ -2,9 +2,9 @@
 -- BBDD: Kairos Gaming Store
 -- ============================================
 
-DROP DATABASE IF EXISTS kairos-daniel;
-CREATE DATABASE kairos-daniel CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE kairos-daniel;
+DROP DATABASE IF EXISTS kairos_daniel;
+CREATE DATABASE kairos_daniel CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE kairos_daniel;
 
 -- ============================================
 -- TABLAS MAESTRAS / CATÁLOGOS

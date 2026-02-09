@@ -1,10 +1,40 @@
 {
   
+
   "scripts": {
-    "dev:win": "concurrently --kill-others \"sass -w scss:css --quiet-deps\" \"php -S localhost:80\" -n \"SASS,PHP\" -c \"bgBlue.bold,bgMagenta.bold\""
+  
+
+    
+
+  "dev:win": "concurrently --kill-others \"sass -w scss:css --quiet-deps\" \"php -S localhost:8080\" -n \"SASS,PHP\" -c \"bgBlue.bold,bgMagenta.bold\""
+  
+
   },
+  
+
   "dependencies": {
-    "bootstrap": "^5.3.8",
-    "bootstrap-icons": "^1.11.3"
+  
+
+    
+
+  "bootstrap": "^5.3.8",
+  
+
+    
+
+  "bootstrap-icons": "^1.11.3"
+  
+
+  },
+  
+
+  "devDependencies": {
+  
+
+    
+
+  "concurrently": "^9.2.1"
+  
+
   }
 }

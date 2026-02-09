@@ -1,7 +1,7 @@
 <?php
-require_once __DIR__ . "/../model/Conexion.php";
-require_once __DIR__ . "/../model/Carrito.php";
-require_once __DIR__ . "/../model/CarritoProducto.php";
+require_once __DIR__ . "/../modelo/Conexion.php";
+require_once __DIR__ . "/../modelo/Carrito.php";
+require_once __DIR__ . "/../modelo/CarritoProducto.php";
 
 class CarritoController {
     private $conexion;

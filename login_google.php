@@ -3,7 +3,7 @@ session_start();
 require_once __DIR__ . "/config_oauth.php";
 require_once __DIR__ . "/modelo/Conexion.php";
 require_once __DIR__ . "/modelo/Usuario.php";
-require_once __DIR__ . "/controller/UsuarioController.php";
+require_once __DIR__ . "/controlador/UsuarioController.php";
 
 $controller = new UsuarioController();
 

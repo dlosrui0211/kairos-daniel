@@ -3,7 +3,7 @@ class Conexion {
     private $host = "127.0.0.1:3306";
     private $usu = "dwes";
     private $pass = "abc123.";
-    private $bd = "kairos-daniel";
+    private $bd = "kairos_daniel2";
     private $conexion;
     
     public function __construct(){

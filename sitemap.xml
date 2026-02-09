@@ -7,6 +7,12 @@
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
+  <url>
+    <loc>http://localhost/trabaja.php</loc>
+    <lastmod>2025-02-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
 
   <url>
     <loc>http://localhost/conocenos.php</loc>
@@ -15,12 +21,6 @@
     <priority>0.7</priority>
   </url>
 
-  <url>
-    <loc>http://localhost/trabaja.php</loc>
-    <lastmod>2025-02-05</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
-  </url>
 
   <url>
     <loc>http://localhost/plataformas.php</loc>
@@ -37,7 +37,7 @@
   </url>
 
   <url>
-    <loc>http://localhost/playstation.php</loc>
+    <loc>http://localhost/nintendo.php</loc>
     <lastmod>2025-02-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -49,21 +49,21 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>http://localhost/nintendo.php</loc>
+    <loc>http://localhost/playstation.php</loc>
     <lastmod>2025-02-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <url>
-    <loc>http://localhost/soporte.php</loc>
-    <lastmod>2025-02-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
 
+
+  <url>
+    <loc>http://localhost/terminoscondiciones.php</loc>
+    <lastmod>2025-02-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
   <url>
     <loc>http://localhost/terninoslegales.php</loc>
     <lastmod>2025-02-05</lastmod>
@@ -72,10 +72,10 @@
   </url>
 
   <url>
-    <loc>http://localhost/terminoscondiciones.php</loc>
+    <loc>http://localhost/soporte.php</loc>
     <lastmod>2025-02-05</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 
 </urlset>

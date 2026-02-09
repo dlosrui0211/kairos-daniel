@@ -76,12 +76,12 @@ class CaptchaMath {
         $html = '
         <div class="captcha-container mb-3">
             <label class="form-label fw-500">Verificación Anti-Bot</label>
-            <div class="captcha-question-box p-3 bg-light border rounded">
+            <div>
                 <p class="mb-2 text-center">
                     <strong>Resuelve esta operación:</strong>
                 </p>
                 <p class="captcha-question text-center fs-3 mb-0">
-                    <span class="badge bg-primary">' . htmlspecialchars($captcha['pregunta']) . ' = ?</span>
+                    <span>' . htmlspecialchars($captcha['pregunta']) . ' = ?</span>
                 </p>
             </div>
             <input type="number" 
