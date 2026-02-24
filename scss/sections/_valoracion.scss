@@ -1,0 +1,400 @@
+// ==========================================
+// ESTILOS DEL MODAL DE VALORACIÓN
+// ==========================================
+// Usa las variables de Kairos del proyecto
+
+// ==========================================
+// MODAL OVERLAY
+// ==========================================
+.modal-valoracion-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+
+    // ==========================================
+    // CONTENIDO DEL MODAL
+    // ==========================================
+    .modal-valoracion-content {
+        background: $texto_claro;
+        border-radius: $border-radius-lg;
+        box-shadow: 0 $spacer * 0.25 $spacer * 1.25 rgba(0, 0, 0, 0.3);
+        width: 90%;
+        max-width: 31.25rem;
+        padding: 0;
+        animation: slideIn 0.3s ease;
+
+        // Header del modal
+        .modal-valoracion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: $spacer * 1.25;
+            border-bottom: $border-width solid #eee;
+
+            h2 {
+                margin: 0;
+                font-size: $font-size-lg;
+                color: $texto_oscuro;
+                font-weight: $headings-font-weight;
+                font-family: $headings-font-family;
+            }
+        }
+
+        // Botón cerrar
+        .modal-close-btn {
+            background: none;
+            border: none;
+            font-size: 1.75rem;
+            cursor: pointer;
+            color: #999;
+            padding: 0;
+            width: 1.875rem;
+            height: 1.875rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.2s ease;
+
+            &:hover {
+                color: $texto_oscuro;
+            }
+        }
+
+        // Body del modal
+        .modal-valoracion-body {
+            padding: $spacer * 1.25;
+
+            .producto-nombre {
+                font-weight: bold;
+                font-size: 1.1em;
+                color: #666;
+                margin: 0 0 $spacer * 1.25 0;
+                font-family: $font-family-sans-serif;
+            }
+        }
+
+        // Contenedor de estrellas
+        .estrellas-container {
+            display: flex;
+            align-items: center;
+            gap: $spacer * 0.9375;
+            margin-bottom: $spacer * 1.5625;
+
+            .estrellas {
+                display: flex;
+                gap: $spacer * 0.5;
+                font-size: 2rem;
+
+                .estrella {
+                    cursor: pointer;
+                    color: #ddd;
+                    transition: color 0.2s, transform 0.2s;
+
+                    &:hover,
+                    &.activa {
+                        color: #ffc107;
+                        transform: scale(1.1);
+                    }
+                }
+            }
+
+            .puntuacion-texto {
+                font-size: 0.875rem;
+                color: #999;
+                min-width: 2.5rem;
+                font-family: $font-family-sans-serif;
+            }
+        }
+
+        // Textarea comentario
+        .comentario-input {
+            width: 100%;
+            padding: $spacer * 0.75;
+            border: $border-width solid #ddd;
+            border-radius: $border-radius-sm;
+            font-family: $font-family-sans-serif;
+            font-size: 0.875rem;
+            resize: vertical;
+            margin-bottom: $spacer * 0.5;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            background-color: $texto_claro;
+            color: $texto_oscuro;
+
+            &:focus {
+                outline: none;
+                border-color: $resalte;
+                box-shadow: 0 0 $spacer * 0.3125 rgba(111, 18, 224, 0.3);
+            }
+        }
+
+        .texto-ayuda {
+            display: block;
+            color: #999;
+            font-size: 0.75rem;
+            margin-bottom: $spacer * 1.25;
+            font-family: $font-family-sans-serif;
+        }
+
+        // Footer del modal
+        .modal-valoracion-footer {
+            display: flex;
+            gap: $spacer * 0.625;
+            padding: $spacer * 1.25;
+            border-top: $border-width solid #eee;
+            justify-content: flex-end;
+
+            .btn-cancelar,
+            .btn-guardar {
+                padding: $spacer * 0.625 $spacer * 1.25;
+                border: none;
+                border-radius: $border-radius-sm;
+                cursor: pointer;
+                font-size: 0.875rem;
+                font-weight: bold;
+                transition: all 0.3s ease;
+                font-family: $font-family-sans-serif;
+            }
+
+            .btn-cancelar {
+                background-color: #f5f5f5;
+                color: $texto_oscuro;
+
+                &:hover {
+                    background-color: #e0e0e0;
+                }
+            }
+
+            .btn-guardar {
+                background-color: $resalte;
+                color: $texto_claro;
+
+                &:hover {
+                    background-color: $secundario;
+                    filter: brightness(1.05);
+                }
+
+                &:disabled {
+                    background-color: #ccc;
+                    cursor: not-allowed;
+                }
+            }
+        }
+    }
+}
+
+// ==========================================
+// ANIMACIÓN DE ENTRADA
+// ==========================================
+@keyframes slideIn {
+    from {
+        transform: translateY(-3.125rem);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+// ==========================================
+// ESTILOS DE LOS BOTONES EN PRODUCT CARD
+// ==========================================
+.product-card {
+    .btn-valorar {
+        background-color: $resalte;
+        color: $texto_claro;
+
+        &:hover {
+            background-color: $secundario;
+            filter: brightness(1.05);
+        }
+
+        &:active {
+            transform: translateY(0);
+        }
+    }
+
+    .btn-add-to-cart {
+        background-color: $resalte;
+        color: $texto_claro;
+
+        &:hover {
+            background-color: $secundario;
+            filter: brightness(1.05);
+        }
+
+        &:active {
+            transform: translateY(0);
+        }
+    }
+}
+
+// ==========================================
+// RESPONSIVE
+// ==========================================
+@media (max-width: 768px) {
+    .modal-valoracion-overlay {
+        .modal-valoracion-content {
+            width: 95%;
+            max-width: 28.125rem;
+
+            .modal-valoracion-header h2 {
+                font-size: 1.25rem;
+            }
+
+            .estrellas-container {
+                margin-bottom: $spacer * 1.25;
+
+                .estrellas {
+                    font-size: 1.75rem;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-valoracion-overlay {
+        .modal-valoracion-content {
+            width: 100%;
+            max-width: none;
+            margin: $spacer;
+
+            .modal-valoracion-header {
+                padding: $spacer;
+            }
+
+            .modal-valoracion-body {
+                padding: $spacer;
+            }
+
+            .modal-valoracion-footer {
+                padding: $spacer;
+                flex-direction: column;
+
+                .btn-cancelar,
+                .btn-guardar {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+// ==========================================
+// PÁGINA DE VALORACIÓN (valoracion.php)
+// ==========================================
+.valoracion-main {
+    padding: 2rem 0;
+    min-height: 60vh;
+}
+
+.valoracion-producto-info {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+
+    @media (max-width: 576px) {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+.valoracion-producto-img {
+    width: 120px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.valoracion-producto-titulo {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.valoracion-media {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.valoracion-estrellas-media {
+    color: #f5c518;
+    font-size: 1.3rem;
+}
+
+.valoracion-media-texto {
+    color: #aaa;
+    font-size: 0.95rem;
+}
+
+.valoracion-escribir {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.valoracion-lista-titulo {
+    font-size: 1.3rem;
+    color: #e0d0ff;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.valoracion-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.valoracion-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.valoracion-card-usuario {
+    color: #e0d0ff;
+}
+
+.valoracion-card-fecha {
+    color: #888;
+    font-size: 0.85rem;
+}
+
+.valoracion-card-estrellas {
+    color: #f5c518;
+    margin-bottom: 0.5rem;
+}
+
+.valoracion-card-puntuacion {
+    color: #aaa;
+    margin-left: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.valoracion-card-comentario {
+    color: #ccc;
+    margin-bottom: 0;
+}
+
+.valoracion-card-sin-comentario {
+    color: #888;
+    margin-bottom: 0;
+}

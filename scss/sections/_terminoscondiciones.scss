@@ -1,0 +1,86 @@
+// ============================================================================
+// TERMINOSCONDICIONES.SCSS - Personalización de Bootstrap
+// ============================================================================
+// Importa las variables ANTES de usar
+@import '../variables';
+
+// ============================================================================
+// MAIN - Contenedor principal SIN FONDO
+// ============================================================================
+.terminos-main {
+    background-color: $primario;
+    min-height: 100vh;
+    padding: 60px 20px;
+
+    @media (max-width: 768px) {
+        padding: 40px 20px;
+    }
+
+    @media (max-width: 576px) {
+        padding: 30px 15px;
+    }
+}
+
+// ============================================================================
+// TÍTULO
+// ============================================================================
+.terminos-titulo {
+    font-family: $headings-font-family;
+    font-size: 36px;
+    color: $texto_claro;
+    text-transform: uppercase;
+    font-weight: $headings-font-weight;
+    padding-bottom: 30px;
+    border-bottom: 2px solid rgba($texto_claro, 0.2);
+    margin-bottom: 40px;
+    line-height: 1.3;
+
+    @media (max-width: 768px) {
+        font-size: 28px;
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+    }
+
+    @media (max-width: 576px) {
+        font-size: 22px;
+        padding-bottom: 15px;
+        margin-bottom: 20px;
+    }
+}
+
+// ============================================================================
+// CONTENIDO - SIN CONTENEDOR DE COLOR
+// ============================================================================
+.terminos-contenido {
+    color: $texto_claro;
+    font-family: $font-family-sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+
+    @media (max-width: 768px) {
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    @media (max-width: 576px) {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    // Párrafos
+    p {
+        margin-bottom: 25px;
+        color: rgba($texto_claro, 0.95);
+        text-align: left;
+
+        @media (max-width: 768px) {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        // Último párrafo sin margen
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}

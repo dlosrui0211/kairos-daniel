@@ -1,0 +1,88 @@
+// 
+// Global
+// 
+
+// Scroll padding for all scroll targets on page used with
+// native CSS smooth scrolling
+// 
+// https://caniuse.com/?search=scroll-padding
+
+html {
+    height: 100%;
+    scroll-padding-top: calc(#{$navbar-height} - 1px);
+}
+
+html, body {
+    color: $light;
+    background-color: $primary !important;
+    overflow-x: hidden;
+}
+
+// Styling for page sections
+.page-section {
+    padding: 6rem 0;
+
+    .page-section-heading {
+        font-size: 2.25rem;
+        line-height: 2rem;
+    }
+
+    @include media-breakpoint-up(lg) {
+        .page-section-heading {
+            font-size: 3rem;
+            line-height: 2.5rem;
+        }
+    }
+}
+
+// ============================================================================
+// ESTILOS DE FOCUS GLOBALES PARA ACCESIBILIDAD
+// ============================================================================
+
+// Foco visible para todos los elementos interactivos
+*:focus-visible {
+    outline: 3px solid #ffffff;
+    outline-offset: 2px;
+}
+
+// Enlaces
+a:focus,
+a:focus-visible {
+    outline: 3px solid #ffffff;
+    outline-offset: 2px;
+}
+
+// Botones generales
+button:focus,
+button:focus-visible {
+    outline: 3px solid #ffffff;
+    outline-offset: 2px;
+}
+
+// Inputs y textareas
+input:focus,
+input:focus-visible,
+textarea:focus,
+textarea:focus-visible,
+select:focus,
+select:focus-visible {
+    outline: 3px solid $resalte;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba($resalte, 0.25);
+}
+
+// Botones de Bootstrap
+.btn:focus,
+.btn:focus-visible {
+    outline: 3px solid #ffffff;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 5px rgba($resalte, 0.4);
+}
+
+// Desktop: Ocultar outline cuando se usa mouse
+// Mantener visible cuando se usa teclado
+@media (hover: hover) and (pointer: fine) {
+    *:focus:not(:focus-visible) {
+        outline: none;
+    }
+}

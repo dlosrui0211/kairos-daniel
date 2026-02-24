@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "dev:win": "concurrently \"sass -w scss:css\" \"php -S localhost:8080\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.8",
+    "bootstrap-icons": "^1.11.3"
+  }
+}

@@ -1,0 +1,385 @@
+// Contraste global para muted, ms-2 y time en detalles
+.details-main .text-muted,
+.details-main .ms-2,
+.details-main time,
+.details-main .text-decoration-line-through {
+    color: #fff !important;
+    opacity: 1 !important;
+    background: transparent !important;
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+
+.details-main .text-decoration-line-through {
+    color: #ffb3b3 !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+    font-weight: 900;
+}
+// Mejoras de contraste para elementos secundarios y muted en detalles
+.details-meta .text-muted,
+.details-meta .ms-2,
+.details-meta time,
+.details-meta .details-total-valoraciones,
+.details-meta .details-rating,
+.details-meta .details-old-price,
+.details-meta .details-date,
+.details-meta .details-comment,
+.details-meta .details-label,
+.details-meta .details-info,
+.details-meta .details-meta,
+.details-meta span.text-muted,
+.details-meta span.ms-2,
+.details-meta .text-decoration-line-through,
+.details-meta [aria-label*="valoración"],
+.details-meta [aria-label*="Precio original"],
+.details-meta [aria-label*="Precio tachado"],
+.details-meta [aria-label*="total"],
+.details-meta [aria-label*="fecha"],
+.details-meta [aria-label*="puntuación"],
+.details-meta [aria-label*="media"],
+.details-meta [aria-label*="comentario"],
+.details-meta [aria-label*="(5/5)"],
+.details-meta [aria-label*="/5"],
+.details-meta [aria-label*="valoraciones"],
+.details-meta [aria-label*="valoración"],
+.details-meta [aria-label*="original"],
+.details-meta [aria-label*="tachado"],
+.details-meta [aria-label*="fecha"],
+.details-meta [aria-label*="media"],
+.details-meta [aria-label*="comentario"],
+.details-meta [aria-label*="(5/5)"] {
+    color: #fff !important;
+    opacity: 1 !important;
+    background: transparent !important;
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+
+.details-price-section .text-muted,
+.details-price-section .ms-2,
+.details-price-section .text-decoration-line-through,
+.details-price-section [aria-label*="Precio original"],
+.details-price-section [aria-label*="tachado"],
+.details-price-section [aria-label*="/5"],
+.details-price-section [aria-label*="valoración"],
+.details-price-section [aria-label*="total"],
+.details-price-section [aria-label*="fecha"],
+.details-price-section [aria-label*="media"],
+.details-price-section [aria-label*="comentario"],
+.details-price-section [aria-label*="(5/5)"] {
+    color: #fff !important;
+    opacity: 1 !important;
+    background: transparent !important;
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+
+// Contraste para precios tachados
+.details-price-section .text-decoration-line-through,
+.details-price-section .details-old-price {
+    color: #ffb3b3 !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+    font-weight: 900;
+}
+// ============================================================================
+// DETAILS.SCSS - Personalización de Bootstrap para Página de Detalles
+// ============================================================================
+
+// Importa las variables ANTES de usar
+@import '../variables';
+
+// =============================================================================
+// MAIN CONTAINER
+// =============================================================================
+
+.details-main {
+    min-height: 100vh;
+    background-color: $primario;
+    padding: 2rem 0;
+    
+    @media (max-width: 768px) {
+        padding: 1.5rem 0;
+    }
+}
+
+.details-container {
+    max-width: 1300px; // ✅ Aumentado para más espacio
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    
+    @media (max-width: 768px) {
+        padding: 0 1rem;
+    }
+}
+
+// =============================================================================
+// IMAGEN DEL PRODUCTO - MÁS PEQUEÑA Y VERTICAL
+// =============================================================================
+
+.details-image {
+    width: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+    background: $secundario;
+    aspect-ratio: 3 / 4; // ✅ VERTICAL (3:4) en lugar de cuadrada (1:1)
+    max-height: 500px; // ✅ Altura máxima limitada
+    
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+    
+    @media (max-width: 992px) {
+        aspect-ratio: 3 / 2;
+        max-width: 600px;
+        max-height: none;
+        margin: 0 auto;
+    }
+}
+
+// =============================================================================
+// INFO DEL PRODUCTO - MÁS COMPACTA
+// =============================================================================
+
+.details-info {
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem; // ✅ Más compacto
+    height: 100%;
+    justify-content: flex-start;
+    padding-top: 0;
+    
+    @media (max-width: 992px) {
+        gap: 1rem;
+        padding-top: 0;
+    }
+}
+
+.details-title {
+    font-family: $headings-font-family;
+    font-weight: $headings-font-weight;
+    font-size: 2.2rem; // ✅ Reducido para que quepa
+    color: $texto_claro;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+    
+    @media (max-width: 992px) {
+        font-size: 2rem;
+    }
+    
+    @media (max-width: 576px) {
+        font-size: 1.8rem;
+    }
+}
+
+.details-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem; // ✅ Más compacto
+    
+    p {
+        font-family: $font-family-sans-serif;
+        font-size: 0.95rem; // ✅ Más pequeño
+        color: $texto_claro;
+        margin: 0;
+        line-height: 1.4;
+        
+        strong {
+            font-weight: 700;
+            color: $texto_claro;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        p {
+            font-size: 0.9rem;
+        }
+    }
+}
+
+.details-description {
+    margin-top: 0.3rem;
+    
+    p {
+        font-family: $font-family-sans-serif;
+        font-size: 0.95rem; // ✅ Más pequeño
+        color: $texto_claro;
+        line-height: 1.5;
+        margin: 0;
+        opacity: 0.95;
+    }
+    
+    @media (max-width: 576px) {
+        p {
+            font-size: 0.9rem;
+        }
+    }
+}
+
+// =============================================================================
+// PRECIO Y BOTÓN - APILADOS VERTICALMENTE
+// =============================================================================
+
+.details-price-section {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.8rem; // ✅ Menos espacio
+    margin-top: 1rem; // ✅ Menos margen superior
+    
+    @media (max-width: 576px) {
+        gap: 0.8rem;
+        margin-top: 1rem;
+    }
+}
+
+.details-price {
+    font-family: $headings-font-family;
+    font-weight: $headings-font-weight;
+    font-size: 1.8rem; // ✅ Más pequeño
+    color: $texto_claro;
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    text-align: left;
+    
+    @media (max-width: 576px) {
+        font-size: 1.6rem;
+    }
+}
+
+.details-add-btn {
+    font-family: $headings-font-family;
+    font-weight: $headings-font-weight;
+    font-size: 1rem; // ✅ Más pequeño
+    color: $texto_claro;
+    background: $resalte;
+    border: none;
+    border-radius: 10px;
+    padding: 0.8rem 2rem; // ✅ Menos padding
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    width: 100%;
+    
+    &:hover {
+        background: darken($resalte, 10%);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba($resalte, 0.5);
+    }
+    
+    &:active {
+        transform: translateY(0);
+    }
+    
+    @media (max-width: 576px) {
+        font-size: 0.95rem;
+        padding: 0.75rem 1.5rem;
+    }
+}
+
+// =============================================================================
+// REQUISITOS DEL SISTEMA - MÁS COMPACTOS
+// =============================================================================
+
+.requirements-title {
+    font-family: $headings-font-family;
+    font-weight: $headings-font-weight;
+    font-size: 1.6rem; // ✅ Más pequeño
+    color: $texto_claro;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 0 0 1.2rem 0; // ✅ Menos margen
+    letter-spacing: 0.05em;
+    
+    @media (max-width: 768px) {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+    }
+}
+
+.requirements-card {
+    background: $resalte;
+    border-radius: 15px;
+    padding: 1.3rem; // ✅ Menos padding
+    height: 100%;
+    
+    @media (max-width: 768px) {
+        padding: 1.2rem;
+    }
+}
+
+.requirements-subtitle {
+    font-family: $headings-font-family;
+    font-weight: $headings-font-weight;
+    font-size: 1.2rem; // ✅ Más pequeño
+    color: $texto_claro;
+    text-transform: uppercase;
+    margin: 0 0 0.8rem 0; // ✅ Menos margen
+    text-align: center;
+    letter-spacing: 0.05em;
+    
+    @media (max-width: 768px) {
+        font-size: 1.1rem;
+        margin-bottom: 0.7rem;
+    }
+}
+
+.requirements-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem; // ✅ Más compacto
+    
+    li {
+        font-family: $font-family-sans-serif;
+        font-size: 0.85rem; // ✅ Más pequeño
+        color: $texto_claro;
+        line-height: 1.4;
+        
+        strong {
+            font-weight: 700;
+            color: $texto_claro;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        gap: 0.5rem;
+        
+        li {
+            font-size: 0.8rem;
+        }
+    }
+}
+
+// =============================================================================
+// RESPONSIVE ADJUSTMENTS
+// =============================================================================
+
+@media (max-width: 992px) {
+    .details-main {
+        .row {
+            &.mb-4 {
+                margin-bottom: 2rem !important;
+            }
+        }
+    }
+    
+    .details-info {
+        margin-top: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .details-container {
+        padding: 0 0.8rem;
+    }
+}

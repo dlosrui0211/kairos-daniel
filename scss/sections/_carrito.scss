@@ -1,0 +1,366 @@
+// ============================================================================
+// CARRITO.SCSS - Personalización de Bootstrap Offcanvas para Carrito
+// ============================================================================
+// Importa las variables ANTES de usar
+@import '../variables';
+
+// ============================================================================
+// OFFCANVAS - Contenedor principal (abre de derecha a izquierda)
+// ============================================================================
+.offcanvas {
+    background-color: $primario;
+    width: 450px;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+
+    @media (max-width: 576px) {
+        width: 100%;
+    }
+}
+
+// ============================================================================
+// OFFCANVAS HEADER - Cabecera del carrito
+// ============================================================================
+.offcanvas-header {
+    background-color: $primario;
+    border-bottom: 1px solid rgba($texto_claro, 0.2);
+    padding: 20px 25px;
+
+    .offcanvas-title {
+        font-family: $headings-font-family;
+        font-size: 28px;
+        color: $texto_claro;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 400;
+    }
+
+    .btn-close {
+        color: $texto_claro;
+        opacity: 0.7;
+        filter: invert(1);
+
+        &:hover,
+        &:focus {
+            color: $resalte;
+            opacity: 1;
+        }
+
+        &:focus,
+        &:focus-visible {
+            outline: 3px solid #ffffff;
+            outline-offset: 2px;
+            box-shadow: 0 0 0 5px rgba($resalte, 0.5);
+        }
+    }
+}
+
+// ============================================================================
+// OFFCANVAS BODY - Contenedor de la lista de productos
+// ============================================================================
+.offcanvas-body {
+    background-color: $primario;
+    padding: 20px 25px;
+    flex-grow: 1;
+    overflow-y: auto;
+
+    // Scrollbar personalizada
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: $secundario;
+        border-radius: 10px;
+    }
+}
+
+// ============================================================================
+// PRODUCT LIST - Lista de productos
+// ============================================================================
+.product-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+// ============================================================================
+// ELEMENTO CARRITO - Producto individual
+// ============================================================================
+.list-group-item.elemento-carrito {
+    background-color: $secundario;
+    border: none;
+    border-radius: 12px;
+    padding: 12px;
+    color: $texto_claro;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba($resalte, 0.15);
+    }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    // ====== TÍTULO DEL PRODUCTO ======
+    .producto-title {
+        font-family: $headings-font-family;
+        font-size: 16px;
+        color: $texto_claro;
+        text-transform: uppercase;
+        font-weight: 400;
+    }
+
+    // ====== PRECIO ======
+    .product-price {
+        font-family: $headings-font-family;
+        font-size: 15px;
+        color: #fff;
+        font-weight: 900;
+        letter-spacing: 0.5px;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.18);
+    }
+
+    // ====== IMAGEN ======
+    .car-tula {
+        width: 70px;
+        height: 70px;
+        object-fit: cover;
+        background-color: #000;
+    }
+}
+
+// ============================================================================
+// CONTROL DE CANTIDAD
+// ============================================================================
+.item-quantity {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 4px 8px;
+    border-radius: 8px;
+    min-width: 70px;
+    justify-content: center;
+
+    .quantity-display {
+        width: 20px;
+        text-align: center;
+        color: $texto_claro;
+        font-weight: 600;
+        font-size: 16px;
+    }
+
+    .quantity-btn {
+        background: none;
+        border: none;
+        color: $texto_claro;
+        cursor: pointer;
+        padding: 0;
+        font-size: 16px;
+        opacity: 0.7;
+        transition: opacity 0.2s ease, color 0.2s ease;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+            opacity: 1;
+            color: $resalte;
+        }
+
+        &:focus,
+        &:focus-visible {
+            outline: 3px solid #ffffff;
+            outline-offset: 2px;
+            opacity: 1;
+            color: $resalte;
+            box-shadow: 0 0 0 5px rgba($resalte, 0.4);
+        }
+    }
+}
+
+// ============================================================================
+// BOTÓN ELIMINAR PRODUCTO
+// ============================================================================
+.remove-item-btn {
+    background: transparent;
+    border: none;
+    color: rgba($texto_claro, 0.6);
+    font-size: 18px;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+
+    &:hover {
+        color: #ff4d4d;
+        background-color: transparent;
+    }
+
+    &:focus,
+    &:focus-visible {
+        outline: 3px solid #ffffff;
+        outline-offset: 2px;
+        color: #ff4d4d;
+        box-shadow: 0 0 0 5px rgba(#ff4d4d, 0.3);
+    }
+
+    i {
+        font-size: 18px;
+    }
+}
+
+// ============================================================================
+// OFFCANVAS FOOTER - Pie con subtotal y botones CON MÁS PADDING
+// ============================================================================
+.offcanvas-footer {
+    background-color: $primario;
+    border-top: 1px solid rgba($texto_claro, 0.2);
+    padding: 25px;
+    flex-shrink: 0;
+
+    // ====== SUBTOTAL ======
+    .subtotal-text {
+        font-family: $font-family-sans-serif;
+        font-size: 18px;
+        color: rgba($texto_claro, 0.8);
+    }
+
+    .subtotal-price {
+        font-family: $headings-font-family;
+        font-size: 24px;
+        color: $texto_claro;
+        font-weight: 700;
+    }
+
+    // Contenedor de subtotal - MÁS PADDING LATERAL
+    .d-flex {
+        padding: 0 15px;
+        margin-bottom: 20px;
+    }
+
+    // ====== BOTONES - MÁS PADDING LATERAL ======
+    .d-grid {
+        gap: 12px;
+        padding: 0 15px;
+
+        .btn {
+            border-radius: 50px;
+            font-family: $headings-font-family;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 12px 20px;
+            font-weight: 400;
+            transition: all 0.2s ease;
+
+            &:hover {
+                transform: scale(1.02);
+            }
+
+            &.btn-primary {
+                background-color: #0d6efd;
+                border-color: #0d6efd;
+                color: #fff;
+                box-shadow: 0 4px 15px rgba(13,110,253,0.4);
+
+                &:hover {
+                    background-color: #084298;
+                    border-color: #084298;
+                    box-shadow: 0 6px 20px rgba(13,110,253,0.5);
+                }
+
+                &:focus,
+                &:focus-visible {
+                    outline: 3px solid #ffffff;
+                    outline-offset: 3px;
+                    box-shadow: 0 0 0 5px rgba(13,110,253,0.5);
+                }
+            }
+
+            &.btn-outline-secondary {
+                color: #212529;
+                background: #fff;
+                border-color: #adb5bd;
+
+                &:hover {
+                    background-color: #e9ecef;
+                    color: #0d6efd;
+                    border-color: #0d6efd;
+                }
+
+                &:focus,
+                &:focus-visible {
+                    outline: 3px solid #0d6efd;
+                    outline-offset: 3px;
+                    box-shadow: 0 0 0 5px rgba(13,110,253,0.3);
+                }
+            }
+        }
+    }
+}
+
+// ============================================================================
+// RESPONSIVE - Móviles
+// ============================================================================
+
+@media (max-width: 576px) {
+    .offcanvas {
+        width: 100%;
+    }
+
+    .offcanvas-header {
+        padding: 15px 20px;
+
+        .offcanvas-title {
+            font-size: 24px;
+        }
+    }
+
+    .offcanvas-body {
+        padding: 15px 20px;
+    }
+
+    .list-group-item.elemento-carrito {
+        padding: 10px;
+
+        .car-tula {
+            width: 60px;
+            height: 60px;
+        }
+
+        .producto-title {
+            font-size: 14px;
+        }
+
+        .product-price {
+            font-size: 13px;
+        }
+    }
+
+    .offcanvas-footer {
+        padding: 20px;
+
+        .d-flex {
+            padding: 0 10px;
+            margin-bottom: 15px;
+        }
+
+        .d-grid {
+            padding: 0 10px;
+            gap: 10px;
+
+            .btn {
+                font-size: 14px;
+                padding: 10px 15px;
+            }
+        }
+    }
+}

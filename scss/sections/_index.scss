@@ -1,0 +1,772 @@
+// ============================================================================
+// INDEX.SCSS - Personalización de Bootstrap para Página de Productos
+// ============================================================================
+// Importa las variables ANTES de usar
+// @import '../variables';
+
+// ============================================================================
+// MAIN - Contenedor principal
+// ============================================================================
+main {
+    background-color: $primario;
+    min-height: 100vh;
+    padding: 0;
+    overflow-x: hidden !important;
+}
+
+// ============================================================================
+// HERO BANNER - Banner con video local y controles personalizados
+// ============================================================================
+.hero-banner {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    margin-bottom: 40px;
+    position: relative;
+
+    @media (max-width: 768px) {
+        margin-bottom: 30px;
+    }
+
+    @media (max-width: 576px) {
+        margin-bottom: 20px;
+    }
+}
+
+.banner-video-container {
+    width: 100%;
+    max-width: 100vw !important;
+    height: auto;
+    position: relative;
+    overflow-x: hidden !important;
+    overflow-y: hidden;
+    background: $primario;
+    box-sizing: border-box;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+
+    // Mostrar controles al pasar el ratón
+    &:hover .video-controles {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    // Variante más pequeña para index
+    &.banner-video-small {
+        max-width: 600px;
+        margin: 2rem auto;
+        border-radius: 12px;
+        width: 100%;
+        overflow-x: hidden !important;
+        display: block;
+        position: relative;
+
+        .banner-video {
+            max-height: 320px;
+            border-radius: 12px;
+            width: 100%;
+            min-width: 0;
+            max-width: 600px;
+            margin: 0 auto;
+
+            @media (max-width: 768px) {
+                max-height: 200px;
+            }
+
+            @media (max-width: 576px) {
+                max-height: 150px;
+            }
+        }
+
+        .banner-overlay {
+            border-radius: 12px;
+        }
+    }
+}
+
+// Video HTML5 del banner
+.banner-video {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    max-height: 320px;
+    min-width: 0;
+    overflow-x: hidden;
+    box-sizing: border-box;
+
+    @media (max-width: 768px) {
+        max-height: 300px;
+    }
+
+    @media (max-width: 576px) {
+        max-height: 200px;
+    }
+}
+
+// Overlay oscuro
+.banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+// ===== CONTROLES DEL VIDEO =====
+.video-controles {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6), transparent);
+    padding: 16px 0 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    z-index: 3;
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.3s ease;
+
+    @media (max-width: 768px) {
+        opacity: 1;
+        visibility: visible;
+        padding: 15px;
+        gap: 8px;
+    }
+
+    @media (max-width: 576px) {
+        padding: 12px;
+        gap: 6px;
+    }
+}
+
+// Botones de control
+.control-btn {
+    background: rgba(102, 126, 234, 0.6);
+    border: 2px solid rgba(102, 126, 234, 0.8);
+    color: $texto_claro;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    padding: 0;
+    flex-shrink: 0;
+
+    &:hover {
+        background: rgba(102, 126, 234, 0.9);
+        border-color: $texto_claro;
+        transform: scale(1.15);
+        box-shadow: 0 0 15px rgba(102, 126, 234, 0.6);
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
+
+    svg {
+        width: 18px;
+        height: 18px;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    }
+
+    @media (max-width: 768px) {
+        width: 36px;
+        height: 36px;
+        svg {
+            width: 18px;
+            height: 18px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        width: 32px;
+        height: 32px;
+        svg {
+            width: 16px;
+            height: 16px;
+        }
+    }
+}
+
+// Botón Play/Pausa específico
+.control-play {
+    background: rgba(111, 18, 224, 0.8);
+    border-color: rgba(111, 18, 224, 1);
+
+    &:hover {
+        background: rgba(111, 18, 224, 1);
+        box-shadow: 0 0 20px rgba(111, 18, 224, 0.8);
+    }
+}
+
+// Barra de progreso
+.progreso-container {
+    flex: 1;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    cursor: pointer;
+    position: relative;
+    overflow: visible;
+    transition: all 0.3s ease;
+
+    &:hover {
+        height: 8px;
+        background: rgba(255, 255, 255, 0.3);
+    }
+
+    @media (max-width: 576px) {
+        height: 5px;
+
+        &:hover {
+            height: 6px;
+        }
+    }
+}
+
+.progreso-barra {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.progreso-relleno {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: linear-gradient(to right, $resalte, #b84fe0);
+    width: 0%;
+    border-radius: 3px;
+    transition: width 0.1s linear;
+    box-shadow: 0 0 10px rgba(111, 18, 224, 0.5);
+}
+
+.progreso-handle {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    width: 16px;
+    height: 16px;
+    background: $texto_claro;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: all 0.3s ease;
+    border: 2px solid $resalte;
+
+    @media (max-width: 576px) {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+.progreso-container:hover .progreso-handle {
+    opacity: 1;
+}
+
+// Tiempo del video
+.tiempo-video {
+    color: rgba($texto_claro, 0.95);
+    font-size: 13px;
+    font-weight: bold;
+    min-width: 95px;
+    text-align: right;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    flex-shrink: 0;
+
+    @media (max-width: 768px) {
+        font-size: 12px;
+        min-width: 85px;
+    }
+
+    @media (max-width: 576px) {
+        font-size: 11px;
+        min-width: 75px;
+    }
+}
+
+// Control de volumen
+.control-volumen-slider {
+    width: 90px;
+    height: 5px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.3);
+        height: 6px;
+    }
+
+    &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: $resalte;
+        cursor: pointer;
+        box-shadow: 0 2px 6px rgba(111, 18, 224, 0.6);
+        transition: all 0.3s ease;
+        border: 2px solid $texto_claro;
+    }
+
+    &::-webkit-slider-thumb:hover {
+        transform: scale(1.3);
+        box-shadow: 0 0 12px rgba(111, 18, 224, 0.8);
+    }
+
+    &::-moz-range-thumb {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: $resalte;
+        cursor: pointer;
+        border: 2px solid $texto_claro;
+        box-shadow: 0 2px 6px rgba(111, 18, 224, 0.6);
+        transition: all 0.3s ease;
+    }
+
+    &::-moz-range-thumb:hover {
+        transform: scale(1.3);
+        box-shadow: 0 0 12px rgba(111, 18, 224, 0.8);
+    }
+
+    @media (max-width: 768px) {
+        width: 70px;
+        height: 4px;
+
+        &:hover {
+            height: 5px;
+        }
+
+        &::-webkit-slider-thumb {
+            width: 12px;
+            height: 12px;
+        }
+
+        &::-moz-range-thumb {
+            width: 12px;
+            height: 12px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        width: 50px;
+        height: 4px;
+
+        &::-webkit-slider-thumb {
+            width: 10px;
+            height: 10px;
+        }
+
+        &::-moz-range-thumb {
+            width: 10px;
+            height: 10px;
+        }
+    }
+}
+
+// Botón pantalla completa
+.control-pantalla-completa {
+    margin-left: auto;
+}
+
+// Contenido sobre el video (tipo Steam)
+.banner-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 60px 40px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5), transparent);
+    z-index: 2;
+
+    @media (max-width: 768px) {
+        padding: 40px 20px;
+    }
+
+    @media (max-width: 576px) {
+        padding: 30px 15px;
+    }
+}
+
+.banner-text {
+    max-width: 900px;
+    width: 100%;
+    margin: 2rem auto 2rem auto;
+    border-radius: 12px;
+    box-sizing: border-box;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    .banner-title {
+        font-family: $headings-font-family;
+        font-size: 56px;
+        color: $texto_claro;
+        font-weight: $headings-font-weight;
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+
+        @media (max-width: 768px) {
+            font-size: 40px;
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 576px) {
+            font-size: 28px;
+            letter-spacing: 1px;
+        }
+    }
+
+    .banner-subtitle {
+        font-size: 20px;
+        color: rgba($texto_claro, 0.95);
+        margin: 15px 0 0 0;
+        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+
+        @media (max-width: 768px) {
+            font-size: 16px;
+        }
+
+        @media (max-width: 576px) {
+            font-size: 14px;
+        }
+    }
+    // ============================================================================
+    // SECCIÓN JUEGO INTERACTIVO - ANCHO COMPLETO
+    // ============================================================================
+    .juego-section {
+        background-color: $primario;
+        padding: 60px 20px;
+        margin: 40px 0;
+        width: 100%;
+
+        @media (max-width: 768px) {
+            padding: 40px 20px;
+        }
+
+        @media (max-width: 576px) {
+            padding: 30px 15px;
+        }
+    }
+
+    .juego-titulo {
+        font-family: $headings-font-family;
+        font-size: 36px;
+        color: $texto_claro;
+        text-transform: uppercase;
+        font-weight: $headings-font-weight;
+        text-align: center;
+        margin-bottom: 15px;
+
+        @media (max-width: 768px) {
+            font-size: 28px;
+        }
+
+        @media (max-width: 576px) {
+            font-size: 22px;
+        }
+    }
+
+    .juego-descripcion {
+        font-size: 18px;
+        color: rgba($texto_claro, 0.85);
+        text-align: center;
+        margin-bottom: 30px;
+
+        @media (max-width: 768px) {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 576px) {
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+    }
+
+    .juego-iframe-container {
+        width: 100%;
+        margin: 0 auto;
+        border-radius: 0;
+        overflow: visible;
+        box-shadow: none;
+    }
+
+    .juego-iframe {
+        width: 100%;
+        height: 800px;
+        border: none;
+        display: block;
+        margin: 0;
+        padding: 0;
+
+        @media (max-width: 1024px) {
+            height: 700px;
+        }
+
+        @media (max-width: 768px) {
+            height: 650px;
+        }
+
+        @media (max-width: 576px) {
+            height: 500px;
+        }
+    }
+
+    // ============================================================================
+    // SECCIÓN PRODUCTOS
+    // ============================================================================
+    .productos-section {
+        background-color: $primario;
+        padding: 40px 20px;
+
+        @media (max-width: 768px) {
+            padding: 30px 15px;
+        }
+
+        @media (max-width: 576px) {
+            padding: 20px 10px;
+        }
+    }
+
+    // ============================================================================
+    // GRID RESPONSIVO
+    // ============================================================================
+
+    // Desktop: 4 columnas (col-lg-3)
+    @media (min-width: 992px) {
+        .container-fluid {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+    }
+
+    // Tablet: 3 columnas (col-md-4)
+    @media (min-width: 768px) and (max-width: 991px) {
+        .row.g-4 {
+            .col-md-4 {
+                flex: 0 0 calc(33.333% - 11px);
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    // Móvil pequeño: 2 columnas (col-sm-6)
+    @media (min-width: 576px) and (max-width: 767px) {
+        .row.g-4 {
+            .col-sm-6 {
+                flex: 0 0 calc(50% - 8px);
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    // Móvil muy pequeño: 1 columna (col-12)
+    @media (max-width: 575px) {
+        .row.g-4 {
+            .col-12 {
+                flex: 0 0 100%;
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    // ============================================================================
+    // GAP/SPACING PERSONALIZADO
+    // ============================================================================
+    .row.g-4 {
+        gap: 20px;
+
+        @media (max-width: 768px) {
+            gap: 15px;
+        }
+
+        @media (max-width: 576px) {
+            gap: 12px;
+        }
+    }
+
+    // ============================================================================
+    // SECCIÓN UBICACIÓN - NUEVA (SIN AFECTAR NADA ANTERIOR)
+    // ============================================================================
+    .ubicacion-section {
+        background-color: $primario;
+        padding: 60px 20px;
+        margin-top: 20px;
+        width: 100%;
+
+        @media (max-width: 768px) {
+            padding: 40px 20px;
+        }
+
+        @media (max-width: 576px) {
+            padding: 30px 15px;
+        }
+    }
+
+    .ubicacion-contenedor {
+        display: grid;
+        grid-template-columns: 0.8fr 1.2fr;
+        gap: 40px;
+        align-items: start;
+        max-width: 1400px;
+        margin: 0 auto;
+        width: 100%;
+        padding: 0 20px;
+
+        @media (max-width: 1024px) {
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+            gap: 30px;
+            padding: 0;
+        }
+
+        @media (max-width: 576px) {
+            padding: 0;
+        }
+    }
+
+    .ubicacion-info {
+        background-color: rgba($texto_claro, 0.05);
+        padding: 30px;
+        border-radius: 10px;
+        border-left: 4px solid rgba($texto_claro, 0.3);
+        height: fit-content;
+
+        @media (max-width: 768px) {
+            padding: 20px;
+        }
+
+        @media (max-width: 576px) {
+            padding: 15px;
+        }
+    }
+
+    .ubicacion-subtitulo {
+        font-family: $headings-font-family;
+        font-size: 22px;
+        color: $texto_claro;
+        font-weight: $headings-font-weight;
+        margin-bottom: 25px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+
+        @media (max-width: 768px) {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 576px) {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+    }
+
+    .info-item {
+        margin-bottom: 20px;
+
+        @media (max-width: 768px) {
+            margin-bottom: 18px;
+        }
+
+        @media (max-width: 576px) {
+            margin-bottom: 15px;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        h3 {
+            font-family: $headings-font-family;
+            font-size: 14px;
+            color: $texto_claro;
+            font-weight: bold;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+
+            @media (max-width: 768px) {
+                font-size: 13px;
+            }
+
+            @media (max-width: 576px) {
+                font-size: 12px;
+            }
+        }
+
+        p {
+            color: rgba($texto_claro, 0.85);
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 0;
+
+            @media (max-width: 768px) {
+                font-size: 13px;
+            }
+
+            @media (max-width: 576px) {
+                font-size: 12px;
+            }
+
+            a {
+                color: rgba($texto_claro, 0.8);
+                text-decoration: none;
+                border-bottom: 1px solid rgba($texto_claro, 0.3);
+                transition: all 0.3s ease;
+
+                &:hover {
+                    color: $texto_claro;
+                    border-bottom-color: $texto_claro;
+                }
+            }
+        }
+    }
+
+    .ubicacion-mapa {
+        width: 100%;
+    }
+
+    .google-maps-iframe {
+        width: 100%;
+        height: 450px;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        display: block;
+
+        @media (max-width: 768px) {
+            height: 400px;
+        }
+
+        @media (max-width: 576px) {
+            height: 300px;
+        }
+    }
+}

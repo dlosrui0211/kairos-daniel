@@ -1,0 +1,284 @@
+// ============================================================================
+// LOGIN.SCSS - Personalización de Bootstrap para Login
+// ============================================================================
+// Importa las variables ANTES de usar
+@import '../variables';
+
+// ============================================================================
+// MAIN - Contenedor principal (reemplaza .login-pc)
+// ============================================================================
+main {
+    background: $primario;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    overflow: auto;
+
+    @media (max-width: 768px) {
+        padding: 20px;
+        justify-content: flex-start;
+        gap: 20px;
+    }
+}
+
+// ============================================================================
+// LOGO
+// ============================================================================
+main > .container > .row > .col-12:first-child {
+    img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+
+        @media (max-width: 768px) {
+            max-width: 200px;
+        }
+    }
+}
+
+// ============================================================================
+// CARD - Contenedor del formulario (reemplaza .frame-9)
+// ============================================================================
+.card {
+    background: $secundario;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border: none;
+    max-width: 450px;
+
+    .card-body {
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        @media (max-width: 768px) {
+            padding: 20px;
+            gap: 15px;
+        }
+    }
+
+    .card-title {
+        color: $texto_claro;
+        font-family: $headings-font-family;
+        font-size: 30px;
+        font-weight: 400;
+        text-align: center;
+        margin-bottom: 0;
+        line-height: 1.2;
+
+        @media (max-width: 768px) {
+            font-size: 24px;
+        }
+    }
+}
+// ============================================================================
+// FORM LABEL - Etiquetas de inputs
+// ============================================================================
+.form-label,
+.form-check-label {
+    color: #ffffff !important; // Texto blanco puro para máximo contraste
+    font-weight: 500 !important;
+    margin-bottom: 0.5rem !important;
+}
+
+small.text-muted {
+    color: #e0e0e0 !important; // Gris muy claro en lugar de gris oscuro
+    opacity: 0.9;
+}
+
+// ============================================================================
+// FORM CONTROL - Inputs (reemplaza .frame-17)
+// ============================================================================
+.form-control,
+.form-control-lg {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border: 2px solid rgba($texto_claro, 0.3) !important; 
+    border-radius: 8px !important;
+    padding: 12px 15px !important;
+    height: 45px !important;
+    font-family: $font-family-sans-serif !important;
+    font-size: 16px !important;
+    color: #ffffff !important; // ⬅️ Color blanco puro con !important
+    -webkit-text-fill-color: #ffffff !important; // ⬅️ Para Safari/Chrome
+    transition: border-color 0.3s ease !important;
+
+    &:focus {
+        border-color: $resalte !important;
+        background-color: rgba(255, 255, 255, 0.2) !important;
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important; // ⬅️ Para Safari/Chrome
+        outline: none !important;
+        box-shadow: 0 0 0 0.2rem rgba($resalte, 0.25) !important;
+    }
+
+    &::placeholder {
+        color: rgba(255, 255, 255, 0.6) !important;
+        opacity: 1 !important;
+    }
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus {
+        -webkit-text-fill-color: #ffffff !important;
+        -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.15) inset !important;
+        transition: background-color 5000s ease-in-out 0s !important;
+    }
+
+    @media (max-width: 768px) {
+        height: 40px !important;
+        padding: 10px 12px !important;
+        font-size: 15px !important;
+    }
+}
+
+// ============================================================================
+// MENSAJES DE VALIDACIÓN
+// ============================================================================
+.invalid-feedback {
+    color: #ff6b6b !important; // Rojo visible para errores
+    font-size: 14px;
+    margin-top: 5px;
+    display: block !important;
+}
+// ============================================================================
+// FORM LABEL (reemplaza .label-field)
+// ============================================================================
+.form-label {
+    color: $texto_claro;
+    font-family: $font-family-sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: left;
+    margin-bottom: 8px;
+
+    @media (max-width: 768px) {
+        font-size: 15px;
+        margin-bottom: 6px;
+    }
+}
+
+// ============================================================================
+// BUTTON PRIMARY - Botón Log In (reemplaza .frame-23)
+// ============================================================================
+.btn-primary {
+    background: $resalte;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 15px;
+    height: 50px;
+    font-family: $headings-font-family;
+    font-size: 20px;
+    font-weight: 400;
+    color: $texto_claro;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        background: darken($resalte, 10%);
+        color: $texto_claro;
+        border-color: darken($resalte, 10%);
+    }
+
+    &:active,
+    &:focus {
+        background: darken($resalte, 10%);
+        color: $texto_claro;
+        border-color: darken($resalte, 10%);
+        box-shadow: none;
+    }
+
+    @media (max-width: 768px) {
+        height: 45px;
+        font-size: 18px;
+    }
+}
+
+// ============================================================================
+// BUTTON OUTLINE SECONDARY - Botón Cancelar (register.php)
+// ============================================================================
+.btn-outline-secondary {
+    color: $resalte;
+    border: 2px solid $resalte;
+    border-radius: 30px;
+    padding: 10px 15px;
+    height: 50px;
+    font-family: $headings-font-family;
+    font-size: 20px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        background: $resalte;
+        color: $texto_claro;
+        border-color: $resalte;
+    }
+
+    &:active,
+    &:focus {
+        background: $resalte;
+        color: $texto_claro;
+        border-color: $resalte;
+        box-shadow: none;
+    }
+
+    @media (max-width: 768px) {
+        height: 45px;
+        font-size: 18px;
+    }
+}
+
+// ============================================================================
+// LINKS (reemplaza el estilo de .a-n-no-tienes-cuenta-registrate-aqu)
+// ============================================================================
+a {
+    color: $texto_claro;
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+        color: lighten($resalte, 15%);
+        text-decoration: underline;
+    }
+}
+
+// ============================================================================
+// UTILIDADES
+// ============================================================================
+
+// Aplicar gap y flex en el contenedor de botones
+.d-grid {
+    gap: 15px;
+
+    @media (max-width: 768px) {
+        gap: 10px;
+    }
+}
+
+// Espaciado en formularios
+.mb-3 {
+    margin-bottom: 15px;
+
+    @media (max-width: 768px) {
+        margin-bottom: 12px;
+    }
+}
+
+.mb-4 {
+    margin-bottom: 20px;
+
+    @media (max-width: 768px) {
+        margin-bottom: 15px;
+    }
+}

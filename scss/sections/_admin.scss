@@ -1,0 +1,698 @@
+// ========================================
+// Admin Panel - Estilos simplificados
+// ========================================
+
+// Menú de navegación
+.admin-menu {
+    background: $primario;
+    border-bottom: 2px solid $resalte;
+
+    .menu-container {
+        display: flex;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .menu-link {
+        flex: 1;
+        padding: 0.875rem 1rem;
+        color: #ffffff;
+        text-decoration: none;
+        text-align: center;
+        font-weight: 600;
+        border-right: 1px solid rgba($resalte, 0.2);
+
+        &:last-child {
+            border-right: none;
+        }
+
+        &:hover {
+            background: rgba($resalte, 0.15);
+            color: $resalte;
+        }
+
+        &.active {
+            background: rgba($resalte, 0.2);
+            color: $resalte;
+            border-bottom: 3px solid $resalte;
+        }
+    }
+}
+
+// Panel principal
+.admin-panel {
+    background: $primario;
+    min-height: calc(100vh - 56px);
+    padding: 1.5rem 0;
+
+    .container {
+        max-width: 1200px;
+    }
+}
+
+// Cabecera
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding: 1rem 1.25rem;
+    background: $secundario;
+    border-radius: 8px;
+
+    h1 {
+        color: #ffffff;
+        font-size: 1.5rem;
+        margin: 0;
+
+        i {
+            color: $resalte;
+            margin-right: 0.5rem;
+        }
+    }
+
+    .btn {
+        background: $resalte;
+        border: none;
+        color: #ffffff;
+        padding: 0.6rem 1.2rem;
+        font-weight: 600;
+        border-radius: 6px;
+
+        &:hover {
+            background: lighten($resalte, 10%);
+        }
+
+        i {
+            margin-right: 0.4rem;
+        }
+    }
+}
+
+// Contenido
+.admin-content {
+    background: darken($primario, 2%);
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 1px solid rgba($resalte, 0.15);
+}
+
+// Tabla (legacy/fallback)
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    thead tr th {
+        padding: 0.75rem;
+        color: #ffffff;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        background: $secundario;
+        border-bottom: 2px solid $resalte;
+        text-align: left;
+    }
+
+    tbody tr {
+        border-bottom: 1px solid rgba($resalte, 0.1);
+
+        &:hover {
+            background: rgba($secundario, 0.2);
+        }
+
+        td {
+            padding: 0.75rem;
+            color: $texto_claro;
+            vertical-align: middle;
+        }
+    }
+}
+
+// ========================================
+// Sistema de tarjetas admin
+// ========================================
+
+.admin-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+    width: 100%;
+
+    &--wide {
+        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+        width: 100%;
+    }
+}
+
+.admin-card {
+    background: rgba($secundario, 0.15);
+    border: 1px solid rgba($resalte, 0.15);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+
+    &:hover {
+        border-color: rgba($resalte, 0.4);
+    }
+}
+
+// Imagen del producto en tarjeta
+.admin-card-img {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+    background: rgba($primario, 0.5);
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .admin-card-badge {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        font-size: 0.8rem;
+        font-weight: 700;
+        padding: 0.3rem 0.6rem;
+        border-radius: 4px;
+
+        &.badge-discount {
+            background: #dc3545;
+            color: white;
+        }
+    }
+}
+
+// Cuerpo de la tarjeta
+.admin-card-body {
+    padding: 1rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.admin-card-title {
+    color: $texto_claro;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.admin-card-subtitle {
+    color: rgba($texto_claro, 0.6);
+    font-size: 0.8rem;
+    margin: 0;
+}
+
+.admin-card-meta {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+}
+
+.admin-card-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-top: 0.25rem;
+}
+
+.admin-card-detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    padding: 0.2rem 0;
+    border-bottom: 1px solid rgba($resalte, 0.06);
+
+    .detail-label {
+        color: rgba($texto_claro, 0.6);
+        font-size: 0.78rem;
+
+        i {
+            margin-right: 0.3rem;
+            color: $resalte;
+        }
+    }
+
+    .detail-value {
+        color: $texto_claro;
+        font-weight: 500;
+        text-align: right;
+    }
+}
+
+// Acciones de la tarjeta
+.admin-card-actions {
+    display: flex;
+    gap: 0.4rem;
+    padding: 0.75rem 1rem;
+    border-top: 1px solid rgba($resalte, 0.1);
+    background: rgba($primario, 0.3);
+    flex-wrap: wrap;
+
+    .btn {
+        font-size: 0.78rem;
+        padding: 0.35rem 0.65rem;
+        border: none;
+        border-radius: 4px;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        min-width: 90px;
+        justify-content: center;
+        font-weight: 600;
+        i {
+            font-size: 0.82rem;
+        }
+    }
+    .btn-info {
+        background: #0d6efd;
+        color: #fff;
+        border: none;
+        &:hover { background: #084298; }
+    }
+    .btn-warning {
+        background: #ffc107;
+        color: #000;
+        &:hover { background: #e0a800; }
+    }
+    .btn-danger {
+        background: #dc3545;
+        color: white;
+        &:hover { background: #c82333; }
+    }
+    .btn-primary {
+        background: $resalte;
+        color: white;
+        &:hover { background: lighten($resalte, 10%); }
+    }
+}
+
+// Tarjeta de usuario - header con avatar
+.admin-card-user-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba($resalte, 0.1);
+    margin-bottom: 0.25rem;
+}
+
+.admin-card-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: $resalte;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+
+    &--sm {
+        width: 36px;
+        height: 36px;
+        font-size: 0.95rem;
+    }
+}
+
+// Tarjeta de valoración
+.admin-card-valoracion-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.admin-card-valoracion-producto {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.6rem;
+    background: rgba($resalte, 0.08);
+    border-radius: 4px;
+    font-size: 0.85rem;
+    color: $texto_claro;
+
+    i {
+        color: $resalte;
+    }
+
+    small {
+        margin-left: auto;
+    }
+}
+
+.admin-card-valoracion-stars {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+
+    i {
+        font-size: 1rem;
+    }
+
+    span {
+        margin-left: 0.4rem;
+        font-weight: 600;
+        font-size: 0.85rem;
+        color: rgba($texto_claro, 0.8);
+    }
+}
+
+.admin-card-valoracion-comment {
+    font-size: 0.85rem;
+    color: rgba($texto_claro, 0.85);
+    font-style: italic;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.admin-card-valoracion-date {
+    color: rgba($texto_claro, 0.5);
+    font-size: 0.78rem;
+
+    i {
+        margin-right: 0.2rem;
+    }
+}
+
+// Filtros
+.filters-section {
+    background: rgba($secundario, 0.15);
+    padding: 1rem;
+    border-radius: 6px;
+    border: 1px solid rgba($resalte, 0.15);
+
+    .form-label {
+        color: $texto_claro;
+        font-weight: 600;
+        margin-bottom: 0.4rem;
+    }
+
+    .form-select {
+        background: rgba($primario, 0.8);
+        color: $texto_claro;
+        border: 1px solid rgba($resalte, 0.3);
+        border-radius: 4px;
+        padding: 0.5rem;
+
+        &:focus {
+            border-color: $resalte;
+            box-shadow: 0 0 0 2px rgba($resalte, 0.25);
+        }
+
+        option {
+            background: $primario;
+            color: $texto_claro;
+        }
+    }
+}
+
+// Modales
+.modal {
+    .modal-content {
+        background: $primario;
+        border: 1px solid $resalte;
+        border-radius: 8px;
+    }
+
+    .modal-header {
+        background: $secundario;
+        border-bottom: 1px solid $resalte;
+        border-radius: 8px 8px 0 0;
+
+        .modal-title {
+            color: $texto_claro;
+            font-weight: 600;
+            font-size: 1.15rem;
+
+            i {
+                color: $resalte;
+                margin-right: 0.5rem;
+            }
+        }
+
+        .btn-close {
+            filter: invert(1);
+        }
+    }
+
+    .modal-body {
+        padding: 1.5rem;
+
+        strong {
+            color: $resalte;
+        }
+
+        span {
+            color: $texto_claro;
+        }
+
+        p {
+            color: $texto_claro;
+        }
+
+        .form-label {
+            color: $texto_claro;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+
+        .form-control,
+        .form-select {
+            background: rgba($secundario, 0.3);
+            color: $texto_claro;
+            border: 1px solid rgba($resalte, 0.3);
+            border-radius: 4px;
+
+            &:focus {
+                border-color: $resalte;
+                box-shadow: 0 0 0 2px rgba($resalte, 0.25);
+                background: rgba($secundario, 0.5);
+                color: $texto_claro;
+            }
+
+            &::placeholder {
+                color: rgba($texto_claro, 0.5);
+            }
+        }
+
+        .form-control[type="date"] {
+            color-scheme: dark;
+        }
+
+        .form-control[type="file"] {
+            &::file-selector-button {
+                background: $resalte;
+                color: #ffffff;
+                border: none;
+                padding: 0.5rem 1rem;
+                font-weight: 600;
+            }
+        }
+
+        .form-select {
+            option {
+                background: $primario;
+                color: $texto_claro;
+            }
+        }
+
+        .text-muted {
+            color: rgba($texto_claro, 0.7) !important;
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 80px;
+        }
+    }
+
+    .modal-footer {
+        background: rgba($secundario, 0.15);
+        border-top: 1px solid rgba($resalte, 0.15);
+
+        .btn-secondary {
+            background: rgba($texto_oscuro, 0.5);
+            border: 1px solid rgba($texto_claro, 0.2);
+            color: $texto_claro;
+
+            &:hover {
+                background: rgba($texto_oscuro, 0.7);
+            }
+        }
+
+        .btn-primary {
+            background: $resalte;
+            border: none;
+            color: #ffffff;
+
+            &:hover {
+                background: lighten($resalte, 10%);
+            }
+        }
+    }
+}
+
+// Checkboxes de géneros
+.generos-checkbox {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.5rem;
+    padding: 1rem;
+    background: rgba($secundario, 0.2);
+    border-radius: 6px;
+    border: 1px solid rgba($resalte, 0.2);
+
+    .form-check {
+        margin: 0;
+        padding: 0.4rem 0.6rem;
+
+        .form-check-input {
+            background-color: rgba($secundario, 0.5);
+            border: 1px solid rgba($resalte, 0.5);
+
+            &:checked {
+                background-color: $resalte;
+                border-color: $resalte;
+            }
+
+            &:focus {
+                box-shadow: 0 0 0 2px rgba($resalte, 0.3);
+            }
+        }
+
+        .form-check-label {
+            color: $texto_claro;
+            font-size: 0.85rem;
+        }
+    }
+}
+
+// Estrellas
+.rating-input {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 0.25rem;
+    padding: 0.75rem;
+    background: rgba($secundario, 0.15);
+    border-radius: 6px;
+
+    input[type="radio"] {
+        display: none;
+    }
+
+    label {
+        cursor: pointer;
+        font-size: 1.75rem;
+
+        i {
+            color: rgba($texto_claro, 0.25);
+        }
+
+        &:hover,
+        &:hover ~ label {
+            i {
+                color: #ffc107;
+            }
+        }
+    }
+
+    input[type="radio"]:checked ~ label {
+        i {
+            color: #ffc107;
+        }
+    }
+}
+
+// Badges
+.badge {
+    padding: 0.35rem 0.6rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+// Alertas admin
+.admin-panel .alert {
+    border-radius: 6px;
+
+    &.alert-success {
+        background: rgba(#28a745, 0.2);
+        border: 1px solid #28a745;
+        color: lighten(#28a745, 30%);
+    }
+
+    &.alert-danger {
+        background: rgba(#dc3545, 0.2);
+        border: 1px solid #dc3545;
+        color: lighten(#dc3545, 30%);
+    }
+
+    &.alert-info {
+        background: rgba(#17a2b8, 0.2);
+        border: 1px solid #17a2b8;
+        color: lighten(#17a2b8, 30%);
+
+        strong {
+            color: $texto_claro;
+        }
+    }
+}
+
+// Responsive
+@media (max-width: 768px) {
+    .admin-header {
+        flex-direction: column;
+        gap: 0.75rem;
+        text-align: center;
+
+        h1 {
+            font-size: 1.25rem;
+        }
+    }
+
+    .admin-menu .menu-container {
+        flex-wrap: wrap;
+    }
+
+    .admin-menu .menu-link {
+        flex: 1 1 33.333%;
+        padding: 0.6rem 0.5rem;
+        font-size: 0.85rem;
+    }
+
+    .admin-cards-grid,
+    .admin-cards-grid--wide {
+        grid-template-columns: 1fr !important;
+    }
+
+    .admin-card-actions {
+        .btn {
+            flex: 1;
+            justify-content: center;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .admin-content {
+        padding: 0.75rem;
+    }
+
+    .admin-cards-grid {
+        gap: 0.75rem;
+    }
+}
